@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://app_core/modules/slider_gallery/camera_slider.gd" type="Script" id=1]
+[ext_resource path="res://app_core/modules/slider_gallery/pagination_slider.gd" type="Script" id=2]
+
+[node name="ParallaxBackground" type="MarginContainer"]
+margin_right = 400.0
+margin_bottom = 700.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = -10
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+
+[node name="Texture_parallax" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_right = 402.0
+margin_bottom = 708.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nav_btn" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="nav_btn"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -65.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="nav_btn/MarginContainer"]
+margin_right = 400.0
+margin_bottom = 45.0
+mouse_filter = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="nav_btn/MarginContainer/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 41.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="MarginContainer1" type="MarginContainer" parent="nav_btn/MarginContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 400.0
+margin_bottom = 45.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="Paginacion" type="HBoxContainer" parent="nav_btn/MarginContainer/VBoxContainer/MarginContainer1"]
+margin_right = 400.0
+mouse_filter = 2
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+anchor_mode = 0
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 4.0
+script = ExtResource( 1 )

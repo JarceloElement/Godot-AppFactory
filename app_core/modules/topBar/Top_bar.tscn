@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://app_core/modules/topBar/Top_bar.gd" type="Script" id=3]
+[ext_resource path="res://app_core/modules/panel_round/Panel_round.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="Top_bar" type="CanvasLayer"]
+script = ExtResource( 3 )
+font = ExtResource( 1 )
+
+[node name="elements" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer_top" type="MarginContainer" parent="elements"]
+margin_right = 400.0
+margin_bottom = 90.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 10
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="elements/MarginContainer_top"]
+margin_top = 10.0
+margin_right = 400.0
+margin_bottom = 90.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="back" parent="elements/MarginContainer_top/HBoxContainer" instance=ExtResource( 2 )]
+margin_right = 48.0
+margin_bottom = 80.0
+custom_constants/margin_left = 20
+icon_size = 50
+icon = "angle-left"
+icon_color = Color( 1, 1, 1, 1 )
+ID_message = "back"
+
+[node name="Title_bar" type="MarginContainer" parent="elements/MarginContainer_top/HBoxContainer"]
+margin_left = 52.0
+margin_right = 337.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="elements/MarginContainer_top/HBoxContainer/Title_bar"]
+margin_top = 22.0
+margin_right = 285.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Title"
+valign = 1
+clip_text = true
+
+[node name="menu" parent="elements/MarginContainer_top/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 341.0
+margin_right = 400.0
+margin_bottom = 80.0
+custom_constants/margin_right = 30
+custom_constants/margin_left = 20
+icon_size = 40
+icon = "ellipsis-v"
+icon_color = Color( 1, 1, 1, 1 )
+ID_message = "btn_menu"
+
+[node name="Panel_round" parent="elements" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 90.0

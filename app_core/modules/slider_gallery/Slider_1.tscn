@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://app_core/modules/slider_gallery/item_slider.gd" type="Script" id=1]
+
+[node name="Slider_1" type="MarginContainer"]
+margin_right = 400.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 400.0
+margin_bottom = 274.0
+
+[node name="Elements" type="VBoxContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 274.0
+mouse_filter = 2

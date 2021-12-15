@@ -1,0 +1,203 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://app_core/modules/panel_round/panel_round.gd" type="Script" id=1]
+[ext_resource path="res://app_core/modules/popup/Options_btn.gd" type="Script" id=2]
+[ext_resource path="res://app_core/modules/popup/PopUp_list.gd" type="Script" id=3]
+[ext_resource path="res://app_core/modules/popup/PopUp_list_item_add.gd" type="Script" id=4]
+[ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="StyleBoxFlat" id=3]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("options_list:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 0.5, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -448 ), Vector2( 0, 152 ), Vector2( 0, 128 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel_round:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 0.5, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -456 ), Vector2( 0, 152 ), Vector2( 0, 128 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("options_list:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, -2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 128 ), Vector2( 0, 152 ), Vector2( 0, -448 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel_round:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 0.5, -2, 2 ),
+"update": 0,
+"values": [ Vector2( 0, 128 ), Vector2( 0, 152 ), Vector2( 0, -456 ) ]
+}
+
+[node name="PopUp_list" type="CanvasLayer"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 576.0, 128.0 ]
+}
+
+[node name="back" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.580392 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = -5
+custom_constants/margin_top = -5
+custom_constants/margin_left = -5
+custom_constants/margin_bottom = -5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="back"]
+show_behind_parent = true
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 405.0
+margin_bottom = 705.0
+mouse_filter = 1
+
+[node name="Panel_round" type="MarginContainer" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+margin_bottom = -124.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 45
+custom_constants/margin_top = -5
+custom_constants/margin_left = 45
+custom_constants/margin_bottom = -5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color = Color( 1, 1, 1, 0.803922 )
+corner_radius_top = 5
+corner_radius_bottom = 5
+
+[node name="back_color" type="PanelContainer" parent="Panel_round"]
+margin_left = 45.0
+margin_top = -5.0
+margin_right = 355.0
+margin_bottom = 453.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="options_list" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 128.0
+margin_bottom = -124.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 0
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="options_list"]
+margin_left = 50.0
+margin_right = 350.0
+margin_bottom = 448.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu_Item" type="VBoxContainer" parent="options_list/ScrollContainer"]
+show_behind_parent = true
+margin_right = 300.0
+margin_bottom = 448.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 2
+script = ExtResource( 4 )
+
+[node name="title_field" type="Label" parent="options_list/ScrollContainer/Menu_Item"]
+margin_right = 300.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+text = "Option"
+valign = 1
+autowrap = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+id_field = -1
+
+[node name="AnimationP" type="AnimationPlayer" parent="."]
+anims/in = SubResource( 4 )
+anims/out = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="gui_input" from="back/PanelContainer" to="." method="_on_PanelContainer_gui_input"]
