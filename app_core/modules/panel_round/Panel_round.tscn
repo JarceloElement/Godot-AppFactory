@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://app_core/modules/panel_round/panel_round.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.505882, 0.752941, 1 )
+
+[node name="Panel_round" type="MarginContainer"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color = Color( 0, 0.505882, 0.752941, 1 )
+
+[node name="back_color" type="PanelContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )

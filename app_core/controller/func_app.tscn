@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://app_core/controller/func_app.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+color_show_pass_icon_act = Color( 0.968627, 0, 0.431373, 1 )

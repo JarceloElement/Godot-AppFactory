@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://app_core/modules/background_scene/background.gd" type="Script" id=1]
+
+[node name="Background_scene" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 400.0
+margin_bottom = 699.0
+color = Color( 0.803922, 0.803922, 0.803922, 1 )
+
+[node name="TextureFrame" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 400.0
+margin_bottom = 699.0
+expand = true
+stretch_mode = 7

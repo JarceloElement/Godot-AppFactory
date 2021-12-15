@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://app_core/modules/viewer/list_report_viewer.gd" type="Script" id=1]
+[ext_resource path="res://app_core/modules/viewer/viewer.gd" type="Script" id=2]
+
+[node name="Viewer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 20.0
+margin_right = 380.0
+margin_bottom = 690.0
+size_flags_horizontal = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="List" type="VBoxContainer" parent="ScrollContainer"]
+show_behind_parent = true
+margin_right = 360.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/separation = 2
+script = ExtResource( 1 )

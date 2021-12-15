@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://app_core/modules/background_scene/Background_scene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://app_core/modules/DB_control/DB_create.tscn" type="PackedScene" id=2]
+[ext_resource path="res://app_core/modules/alert/Alert.tscn" type="PackedScene" id=3]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://app_core/modules/viewer/Viewer.tscn" type="PackedScene" id=13]
+
+[node name="Dashboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background_scene" parent="." instance=ExtResource( 1 )]
+show_texture = false
+back_color = Color( 1, 1, 1, 1 )
+
+[node name="Viewer" parent="." instance=ExtResource( 13 )]
+anchor_top = 0.0857143
+
+[node name="ScrollContainer" parent="Viewer" index="0"]
+margin_bottom = 630.0
+
+[node name="List" parent="Viewer/ScrollContainer" index="0"]
+margin_bottom = 118.0
+form_path = "form_signup.cfg"
+form_table_name = "SIGNUP_FORM"
+DB_name = "users.cfg"
+DB_table = "USERS"
+max_lista = 10
+set_init = false
+
+[node name="Button_icon" parent="Viewer/ScrollContainer/List" index="0" instance=ExtResource( 8 )]
+margin_right = 360.0
+margin_bottom = 52.0
+icon_size = 42
+icon = "paper-plane"
+icon_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+ID_message = "form_send"
+
+[node name="DB_create" parent="Viewer/ScrollContainer/List" index="1" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 360.0
+margin_bottom = 118.0
+csv_to_DB = [ true, "res://DB/form_signup.txt" ]
+
+[node name="Alert" parent="Viewer" instance=ExtResource( 3 )]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 380.0
+margin_bottom = 630.0
+font_color = Color( 1, 1, 1, 1 )
+
+[editable path="Viewer"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/FontAwesome/fontawesome-webfont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://app_core/modules/slider_gallery/Button_icon.gd" type="Script" id=2]
+[ext_resource path="res://app_core/modules/awesome_button/aweson_button.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="Button_icon" type="MarginContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 20, 10 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 50.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.45098, 0.45098, 0.45098, 1 )
+text = ""
+align = 1
+valign = 1
+script = ExtResource( 4 )
+size = 40
+icon = "warning"
