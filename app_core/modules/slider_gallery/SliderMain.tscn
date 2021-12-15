@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://app_core/modules/slider_gallery/main.gd" type="Script" id=1]
 [ext_resource path="res://app_core/modules/images/hero-image.png" type="Texture" id=2]
 [ext_resource path="res://app_core/modules/slider_gallery/Slider_1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://app_core/modules/slider_gallery/Slider_container.tscn" type="PackedScene" id=4]
@@ -22,6 +23,7 @@ anchor_bottom = 1.0
 margin_top = 2.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -100,6 +102,8 @@ title_size = 40
 corner_radius_lefttop = 10
 corner_radius_rigthbottom = 10
 border_width = 0
+ID_message = "scn"
+scn_path = "res://app_core/modules/responsiveApp/Dashboard.tscn"
 
 [node name="Slider_2" parent="Slider_container/ParallaxBackground/VBoxContainer/Items" index="1" instance=ExtResource( 3 )]
 margin_left = 304.0

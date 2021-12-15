@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="AppFactory"
+run/main_scene="res://splash/splash.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -18,7 +19,7 @@ config/icon="res://icon.png"
 FuncApp="*res://app_core/controller/func_app.gd"
 Messages="*res://app_core/controller/messages.gd"
 DbQuery="*res://app_core/controller/DB_query.gd"
-Loading="*res://app_core/controller/loading/loading.gd"
+Loading="*res://app_core/controller/loading/loading.tscn"
 TTS="*res://addons/godot-tts/TTS.gd"
 SliderControl="*res://app_core/controller/SliderControl.gd"
 

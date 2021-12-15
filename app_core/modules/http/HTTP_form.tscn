@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://app_core/assets/http/http_form.gd" type="Script" id=1]
+[ext_resource path="res://app_core/modules/http/http_form.gd" type="Script" id=1]
 
 [node name="HTTP_form" type="HTTPRequest"]
 use_threads = true
