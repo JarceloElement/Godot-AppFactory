@@ -16,12 +16,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-FuncApp="*res://app_core/controller/func_app.gd"
-Messages="*res://app_core/controller/messages.gd"
-DbQuery="*res://app_core/controller/DB_query.gd"
-Loading="*res://app_core/controller/loading/loading.tscn"
+FuncApp="*res://app_core/globals/func_app.gd"
+Messages="*res://app_core/globals/messages.gd"
+DbQuery="*res://app_core/globals/DB_query.gd"
+Loading="*res://app_core/globals/loading/loading.tscn"
 TTS="*res://addons/godot-tts/TTS.gd"
-SliderControl="*res://app_core/controller/SliderControl.gd"
+SliderControl="*res://app_core/globals/SliderControl.gd"
 
 [display]
 
