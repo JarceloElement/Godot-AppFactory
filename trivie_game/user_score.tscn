@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://trivie_game/scripts/user_score.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://app_core/fonts_preload/Roboto-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://app_core/modules/dynamic_label/dynamic_label.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="user_score" type="MarginContainer"]
+margin_right = 375.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 0
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.529541, 0.902794, 0.941406, 1 )
+show_behind_parent = true
+margin_left = 40.0
+margin_right = 335.0
+margin_bottom = 94.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 40.0
+margin_right = 335.0
+margin_bottom = 94.0
+mouse_filter = 0
+
+[node name="position" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 94.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="position" parent="HBoxContainer/position" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 17.0
+margin_right = 38.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+text = "3"
+title_size = 50
+Title_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+font = ExtResource( 4 )
+
+[node name="score" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 52.0
+margin_right = 153.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 10
+
+[node name="score" parent="HBoxContainer/score" instance=ExtResource( 5 )]
+margin_top = 35.0
+margin_right = 91.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+text = "User 2500"
+title_size = 20
+Title_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+font = ExtResource( 3 )
+
+[node name="wallet" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 157.0
+margin_right = 295.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="wallet" parent="HBoxContainer/wallet" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 29.0
+margin_right = 128.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+text = "WL 2500"
+align = 2
+Title_color = Color( 0.207843, 0.207843, 0.207843, 1 )

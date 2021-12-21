@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fanfarria_corta.ogg-024b17e152ab246d00b0f3799b9b99ae.oggstr"
+
+[deps]
+
+source_file="res://trivie_game/sound/fanfarria_corta.ogg"
+dest_files=[ "res://.import/fanfarria_corta.ogg-024b17e152ab246d00b0f3799b9b99ae.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

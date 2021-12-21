@@ -35,6 +35,9 @@ func _ready():
 	
 	add_to_group("DB_control")
 
+	if impor_priority == 0:
+		queue_free()
+		
 	progress_bar = get_node("ProgressBar")
 	if Show_ProgressBar == false:
 		hide()
@@ -69,6 +72,7 @@ func _ini(): # viene de process_delta
 	if get_node("/root/FuncApp").DB_control_priority == impor_priority:
 	
 		path_DB_home = (path_user+DB_name) # esto crea la DB en la ruta como texto plano en blanco sin registros
+		get_node("/root/FuncApp").ACTIVE_DB_PATH["path"] = path_DB_home
 
 		if csv_to_DB[0] == true: # si esta activa la importacionde DB
 

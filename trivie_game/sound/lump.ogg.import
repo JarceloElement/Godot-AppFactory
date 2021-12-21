@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lump.ogg-3ba39d7729343d221879efe13d71227b.oggstr"
+
+[deps]
+
+source_file="res://trivie_game/sound/lump.ogg"
+dest_files=[ "res://.import/lump.ogg-3ba39d7729343d221879efe13d71227b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

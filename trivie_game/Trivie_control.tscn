@@ -1,0 +1,464 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://trivie_game/scripts/Trivie_control.gd" type="Script" id=1]
+[ext_resource path="res://trivie_game/Progres_bar_game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://app_core/fonts_preload/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://trivie_game/Question.tscn" type="PackedScene" id=4]
+[ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://trivie_game/assets/edificio.png" type="Texture" id=6]
+[ext_resource path="res://trivie_game/scripts/Button_GridContainer.gd" type="Script" id=7]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://trivie_game/Word_button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://app_core/modules/dynamic_button/dynamic_button.tscn" type="PackedScene" id=10]
+[ext_resource path="res://trivie_game/Score_board.tscn" type="PackedScene" id=11]
+[ext_resource path="res://trivie_game/user_score.tscn" type="PackedScene" id=12]
+[ext_resource path="res://app_core/modules/dynamic_label/dynamic_label.tscn" type="PackedScene" id=13]
+[ext_resource path="res://trivie_game/assets/buho.png" type="Texture" id=14]
+[ext_resource path="res://app_core/modules/DB_control/DB_create.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 0, 0.470588, 1 )
+
+[node name="Trivie_control" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+language = "en"
+voice_type = "female"
+set_init = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 400.0
+margin_bottom = 718.0
+color = Color( 0.156863, 0.776471, 0.823529, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 718.0
+mouse_filter = 0
+custom_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 30.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 30
+
+[node name="Progres_bar_game" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 70.0
+
+[node name="title" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 400.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 0
+
+[node name="Title" parent="VBoxContainer/title" instance=ExtResource( 13 )]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 380.0
+margin_bottom = 36.0
+text = "Title"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Question" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 106.0
+margin_right = 400.0
+margin_bottom = 168.0
+
+[node name="answer" parent="VBoxContainer/Question" index="0"]
+margin_right = 400.0
+margin_bottom = 62.0
+
+[node name="Label" parent="VBoxContainer/Question/answer" index="0"]
+margin_right = 400.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_fonts/font = SubResource( 5 )
+autowrap = true
+title_size = 35
+Title_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+font = ExtResource( 3 )
+
+[node name="Image" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 400.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 0, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 40
+
+[node name="refer_image" type="TextureRect" parent="VBoxContainer/Image"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Word_interaction" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 248.0
+margin_right = 400.0
+margin_bottom = 504.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Answer_verify" parent="VBoxContainer/Word_interaction" instance=ExtResource( 13 )]
+margin_top = 0.0
+margin_right = 400.0
+margin_bottom = 36.0
+text = "Answer"
+align = 1
+valign = 1
+
+[node name="Button_GridContainer" type="MarginContainer" parent="VBoxContainer/Word_interaction"]
+margin_top = 66.0
+margin_right = 400.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 50 )
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+script = ExtResource( 7 )
+
+[node name="color_back" type="ColorRect" parent="VBoxContainer/Word_interaction/Button_GridContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.601098 )
+margin_left = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Word_interaction/Button_GridContainer"]
+margin_left = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Word_interaction/Button_GridContainer/ScrollContainer"]
+margin_right = 380.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 3
+
+[node name="Word_button1" parent="VBoxContainer/Word_interaction/Button_GridContainer/ScrollContainer/GridContainer" instance=ExtResource( 9 )]
+visible = false
+margin_left = 0.0
+margin_right = 95.0
+focus_mode = 1
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/Word_interaction"]
+margin_top = 146.0
+margin_right = 400.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="Button_Grid_options" type="MarginContainer" parent="VBoxContainer/Word_interaction"]
+margin_top = 176.0
+margin_right = 400.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 0, 50 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+script = ExtResource( 7 )
+type = "option"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Word_interaction/Button_Grid_options"]
+margin_left = 10.0
+margin_right = 390.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Word_interaction/Button_Grid_options/ScrollContainer"]
+margin_right = 380.0
+margin_bottom = 50.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 3
+
+[node name="Word_button" parent="VBoxContainer/Word_interaction/Button_Grid_options/ScrollContainer/GridContainer" instance=ExtResource( 9 )]
+visible = false
+margin_left = 0.0
+margin_right = 126.0
+focus_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Word_interaction"]
+margin_top = 256.0
+margin_right = 400.0
+margin_bottom = 256.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="Score_board" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 498.0
+margin_right = 400.0
+margin_bottom = 550.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Score_board"]
+margin_right = 400.0
+margin_bottom = 52.0
+
+[node name="Score_board" parent="VBoxContainer/Score_board/ScrollContainer" instance=ExtResource( 11 )]
+margin_right = 400.0
+margin_bottom = 80.0
+custom_constants/separation = 5
+
+[node name="user_score" parent="VBoxContainer/Score_board/ScrollContainer/Score_board" instance=ExtResource( 12 )]
+margin_right = 388.0
+margin_bottom = 80.0
+set_background = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 504.0
+margin_right = 400.0
+margin_bottom = 579.0
+rect_min_size = Vector2( 0, 75 )
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 30
+
+[node name="button_dynamic2" parent="VBoxContainer/MarginContainer3" instance=ExtResource( 10 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 45.0
+type_btn = "verify_trivie"
+Title_message = "Validar"
+font = ExtResource( 5 )
+ID_message = "trivie_control"
+
+[node name="Button" parent="VBoxContainer/MarginContainer3/button_dynamic2" index="0"]
+margin_left = 100.0
+margin_right = 300.0
+rect_min_size = Vector2( 200, 0 )
+custom_colors/font_color_focus = Color( 1, 0, 0.470588, 1 )
+custom_colors/font_color = Color( 1, 0, 0.470588, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0.470588, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.470588, 1 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "  Validar  "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 579.0
+margin_right = 400.0
+margin_bottom = 624.0
+
+[node name="Button_icon" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 8 )]
+visible = false
+margin_right = 198.0
+margin_bottom = 51.0
+size_flags_horizontal = 3
+custom_constants/margin_left = 20
+icon_size = 40
+icon = "volume-up"
+icon_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+ID_message = "pronunc"
+
+[node name="button_dynamic" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 45.0
+type_btn = "next_trivie"
+Title_message = "Avanzar"
+font = ExtResource( 5 )
+hover_color = Color( 0.670588, 1, 0.894118, 1 )
+border_color = Color( 0.45098, 1, 0.470588, 1 )
+font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+font_color_hover = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+border_width = 0
+ID_message = "sql_next_trivie"
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 30
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 624.0
+margin_right = 400.0
+margin_bottom = 654.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 30
+
+[node name="DB_create" parent="VBoxContainer" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 654.0
+margin_right = 400.0
+margin_bottom = 718.0
+DB_name = "vocabulario.cfg"
+csv_to_DB = [ true, "res://DB/vocabulario.txt" ]
+table_name = "CONF"
+field_index = 1
+impor_priority = 0
+
+[node name="Popup" type="MarginContainer" parent="."]
+visible = false
+margin_right = 400.0
+margin_bottom = 718.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+margin_right = 400.0
+margin_bottom = 718.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup"]
+margin_right = 400.0
+margin_bottom = 718.0
+mouse_filter = 0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Image" type="MarginContainer" parent="Popup/VBoxContainer"]
+margin_top = 158.0
+margin_right = 400.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_horizontal = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 30
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 10
+
+[node name="TextureFrame" type="TextureRect" parent="Popup/VBoxContainer/Image"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="sentence" parent="Popup/VBoxContainer" instance=ExtResource( 13 )]
+margin_top = 328.0
+margin_right = 400.0
+margin_bottom = 364.0
+custom_colors/font_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+align = 1
+Title_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+
+[node name="pronunciation" parent="Popup/VBoxContainer" instance=ExtResource( 13 )]
+margin_top = 384.0
+margin_right = 400.0
+margin_bottom = 420.0
+custom_colors/font_color = Color( 0.266667, 0.690196, 1, 1 )
+align = 1
+Title_color = Color( 0.266667, 0.690196, 1, 1 )
+
+[node name="timer_count" parent="Popup/VBoxContainer" instance=ExtResource( 13 )]
+margin_top = 440.0
+margin_right = 400.0
+margin_bottom = 476.0
+custom_colors/font_color = Color( 1, 0.654902, 0.0627451, 1 )
+align = 1
+Title_color = Color( 1, 0.654902, 0.0627451, 1 )
+
+[node name="button_dynamic" parent="Popup/VBoxContainer" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 496.0
+margin_right = 400.0
+margin_bottom = 541.0
+Title_message = "_continue"
+font = ExtResource( 5 )
+ID_message = "sql_next_trivie"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+
+[editable path="VBoxContainer/Question"]
+[editable path="VBoxContainer/MarginContainer3/button_dynamic2"]

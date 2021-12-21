@@ -207,7 +207,7 @@ func _form_send(button_param): # RECOGE LOS TIPOS DE DATOS | del boton de enviar
 		
 		$MarginContainer/color_bg.modulate = line_color_edit
 
-	print("SIZE-ARRAY-FORM: ",get_node("/root/FuncApp").Total_list_field," | ",get_node("/root/FuncApp").array_form.size())
+	# print("SIZE-ARRAY-FORM: ",get_node("/root/FuncApp").Total_list_field," | ",get_node("/root/FuncApp").array_form.size())
 	
 	# SI ESTA COMPLETO EL FORMULARIO
 	if get_node("/root/FuncApp").Total_list_field == get_node("/root/FuncApp").array_form.size(): 

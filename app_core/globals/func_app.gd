@@ -122,7 +122,7 @@ var line_edit_panel = preload("res://app_core/modules/form/line_edit_panel.tscn"
 
 
 # THEMES
-#var theme_city_tools = load("res://app_core/templates/city_game/gui_theme/scroll.tres")
+var theme_city_tools = load("res://trivie_game/gui_theme/scroll.tres")
 var text_theme = load("res://app_core/themes/text_edit_theme.tres")
 
 
@@ -309,7 +309,7 @@ var HTTP_Request_result = {}
 #var User_score = preload("res://app_core/scn/pages/english_trivie/elements/user_score.tscn")
 
 ## TRIVIE RESOURCE
-#var Word_button = preload("res://app_core/templates/english_trivie/elements/Word_button.tscn")
+var Word_button = preload("res://trivie_game/Word_button.tscn")
 
 # # Post DB conf
 # var INSTANCE = ""
@@ -331,7 +331,7 @@ var resul_report = ""
 # var next_product = 1
 
 # SESSION
-var SESSION = {"user_name":"","wallet":""}
+var SESSION = {"user_id":"1","user_name":"Player","wallet":"0"}
 
 # OPEN-GRAPH PRODUCTS
 var p_id_product = ""

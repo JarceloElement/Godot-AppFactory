@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/notific.ogg-189e1de85adc25b7562a9ff164af8757.oggstr"
+
+[deps]
+
+source_file="res://trivie_game/sound/notific.ogg"
+dest_files=[ "res://.import/notific.ogg-189e1de85adc25b7562a9ff164af8757.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

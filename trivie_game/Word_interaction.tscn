@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://trivie_game/scripts/Button_GridContainer.gd" type="Script" id=1]
+[ext_resource path="res://trivie_game/Word_button.tscn" type="PackedScene" id=2]
+
+[node name="Word_interaction" type="VBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 0.0
+margin_top = 255.0
+margin_right = 500.0
+margin_bottom = 513.0
+custom_constants/separation = 50
+alignment = 0
+mouse_filter = 2
+
+[node name="Button_GridContainer" type="MarginContainer" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 500.0
+margin_bottom = 128.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+type = "word"
+mouse_filter = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Button_GridContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 490.0
+margin_bottom = 128.0
+scroll_horizontal_enabled = true
+scroll_vertical_enabled = true
+scroll/deadzone = 0
+mouse_filter = 0
+
+[node name="GridContainer" type="GridContainer" parent="Button_GridContainer/ScrollContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 480.0
+margin_bottom = 128.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 4
+mouse_filter = 2
+
+[node name="Button_Grid_options" type="MarginContainer" parent="."]
+
+editor/display_folded = true
+rect_min_size = Vector2( 0, 80 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags_horizontal = 3
+size_flags_vertical = 1
+margin_left = 0.0
+margin_top = 178.0
+margin_right = 500.0
+margin_bottom = 258.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+type = "option"
+mouse_filter = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Button_Grid_options"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 490.0
+margin_bottom = 80.0
+scroll_horizontal_enabled = true
+scroll_vertical_enabled = true
+scroll/deadzone = 0
+mouse_filter = 0
+
+[node name="GridContainer" type="GridContainer" parent="Button_Grid_options/ScrollContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 480.0
+margin_bottom = 80.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 3
+mouse_filter = 2
+
+[node name="Word_button" parent="Button_Grid_options/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+
+margin_right = 132.0
+type = "option"
+
+[node name="Word_button1" parent="Button_Grid_options/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+
+margin_left = 142.0
+margin_right = 299.0
+text = "am"
+type = "option"
+
+[node name="Word_button2" parent="Button_Grid_options/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+
+margin_left = 309.0
+margin_right = 480.0
+text = "here"
+type = "option"

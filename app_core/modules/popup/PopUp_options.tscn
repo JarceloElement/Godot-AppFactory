@@ -6,11 +6,17 @@
 [ext_resource path="res://app_core/modules/popup/PopUp_list_item_add.gd" type="Script" id=4]
 [ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.964706, 0.964706, 0.964706, 0.803922 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+extra_spacing_bottom = -20
+font_data = ExtResource( 5 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 10.0
@@ -21,10 +27,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=4]
 length = 0.5
@@ -125,7 +127,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-color = Color( 1, 1, 1, 0.803922 )
+color = Color( 0.964706, 0.964706, 0.964706, 0.803922 )
 corner_radius_top = 5
 corner_radius_bottom = 5
 
@@ -135,7 +137,7 @@ margin_top = -5.0
 margin_right = 355.0
 margin_bottom = 453.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 6 )
 
 [node name="options_list" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -177,15 +179,16 @@ script = ExtResource( 4 )
 
 [node name="title_field" type="Label" parent="options_list/ScrollContainer/Menu_Item"]
 margin_right = 300.0
-margin_bottom = 59.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+size_flags_vertical = 0
 custom_colors/font_color = Color( 0.27451, 0.27451, 0.27451, 1 )
-text = "Option"
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 1 )
+text = "Title"
 valign = 1
 autowrap = true
 script = ExtResource( 2 )

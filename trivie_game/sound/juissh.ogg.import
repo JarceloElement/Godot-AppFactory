@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/juissh.ogg-028b1d60dd5e5e648534cb7113ea4275.oggstr"
+
+[deps]
+
+source_file="res://trivie_game/sound/juissh.ogg"
+dest_files=[ "res://.import/juissh.ogg-028b1d60dd5e5e648534cb7113ea4275.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

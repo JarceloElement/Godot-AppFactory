@@ -1,6 +1,6 @@
 tool
 extends HBoxContainer
-export var type_btn = ""
+export var type_btn = "btn_http"
 export var Title_message = "Title" setget _set_title
 export var title_size = 25 setget _set_title_size
 
@@ -120,6 +120,7 @@ func _set_title_size(size):
 		
 func _ready():
 	add_to_group(type_btn)
+	add_to_group("dynamic_btn")
 	$Button.connect("pressed",self,"_pressed")
 	
 	normal_style.corner_radius_bottom_left = corner_radius_leftbottom
@@ -164,7 +165,6 @@ func _ready():
 	$Button.set("custom_colors/font_color",font_color)
 	$Button.set("custom_colors/font_color_hover",font_color_hover)
 	$Button.set("custom_colors/font_color_pressed",font_color)
-	$Button.set("custom_colors/font_color_focus",font_color)
 	
 	
 	var title = get_node("/root/Messages").get(Title_message)
