@@ -1,4 +1,4 @@
-# Godot | AppFactory
+# Godot | AppFactory 3.X
 Creation of GUI and modules for multiplatform applications.
 
 
