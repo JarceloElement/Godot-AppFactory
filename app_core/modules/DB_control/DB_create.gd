@@ -32,7 +32,6 @@ var cond_bool = 1
 
 
 func _ready():
-	
 	add_to_group("DB_control")
 
 	if impor_priority == 0:
@@ -73,10 +72,10 @@ func _ini(): # viene de process_delta
 	
 		path_DB_home = (path_user+DB_name) # esto crea la DB en la ruta como texto plano en blanco sin registros
 		get_node("/root/FuncApp").ACTIVE_DB_PATH["path"] = path_DB_home
+#		print(path_DB_home)
 
 		if csv_to_DB[0] == true: # si esta activa la importacionde DB
 
-#			print(path_DB_home)
 
 			if !dir_new.file_exists(path_DB_home):
 				$Label.set_text(" NO exist in: "+path_DB_home)

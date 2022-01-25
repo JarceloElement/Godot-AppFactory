@@ -64,7 +64,7 @@ func _on_HTTPRequest_request_completed( result, response_code, headers, body ):
 
 			# --- MENSAJE AWESOME ---
 			var param_msg = [get_node("/root/Messages").send_form_complete_icon, get_node("/root/Messages").send_form_complete]
-			var mensajes = get_tree().get_nodes_in_group("click_awesome")
+			mensajes = get_tree().get_nodes_in_group("click_awesome")
 			for i in mensajes:
 				i.click_awesome("message_request_form",param_msg)
 				i.click_awesome("btn_send","continuar")

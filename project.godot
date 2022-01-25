@@ -12,6 +12,10 @@ config_version=4
 
 config/name="AppFactory"
 run/main_scene="res://splash/splash.tscn"
+boot_splash/image="res://app_core/images/splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -27,6 +31,8 @@ SliderControl="*res://app_core/globals/SliderControl.gd"
 
 window/size/width=400
 window/size/height=700
+window/handheld/orientation="sensor"
+window/ios/hide_home_indicator=false
 
 [input_devices]
 

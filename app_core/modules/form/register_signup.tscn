@@ -29,7 +29,7 @@ margin_bottom = 630.0
 [node name="List" parent="Viewer/ScrollContainer" index="0"]
 margin_bottom = 121.0
 custom_constants/separation = 5
-form_path = "form_signup.cfg"
+form_db_name = "form_signup.cfg"
 form_table_name = "SIGNUP_FORM"
 DB_name = "users.cfg"
 DB_table = "USERS"

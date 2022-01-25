@@ -28,3 +28,8 @@ func _set_font(n_font):
 		title_font.size = title_size
 		set("custom_fonts/font", title_font)
 		
+
+func _ready():
+	
+	if $"/root/Messages".get(text):
+		text = $"/root/Messages".get(text)

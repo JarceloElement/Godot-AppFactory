@@ -2,7 +2,7 @@
 Creation of GUI and modules for multiplatform applications. Graphic design and 3D modeling
 
 
-**DOC**
+**DOC OF APP_CORE PROJECT**
 
 **GLOBALS**
 
@@ -94,7 +94,7 @@ Creation of GUI and modules for multiplatform applications. Graphic design and 3
 <td>10</td>
 <td>DB_create</td>
 <td></td>
-<td>Convert CSV to DB.cfg, copy DB from proyect to local SD</td>
+<td>Convert .csv/.txt to DB.cfg</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -106,7 +106,7 @@ Creation of GUI and modules for multiplatform applications. Graphic design and 3
 </tr>
 <tr class="odd">
 <td>12</td>
-<td>Register Form</td>
+<td>Registration Form</td>
 <td><p><strong>Nodes:</strong></p>
 <p>1- Viewer</p>
 <p>2- Alert (in tree)</p>

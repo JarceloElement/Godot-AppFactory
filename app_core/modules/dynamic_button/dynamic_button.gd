@@ -1,6 +1,6 @@
 tool
 extends HBoxContainer
-export var type_btn = ""
+export var type_btn = "group_name"
 export var Title_message = "Title" setget _set_title
 export var title_size = 25 setget _set_title_size
 

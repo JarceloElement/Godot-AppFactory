@@ -43,6 +43,12 @@ func _set_corner_detail(corner_d):
 	
 func _ready():
 	
+	style.bg_color = color
 	style.anti_aliasing = anti_aliasing
-	
+	style.corner_detail = corner_detail
+	style.corner_radius_top_left = corner_radius_top
+	style.corner_radius_top_right = corner_radius_top
+	style.corner_radius_bottom_left = corner_radius_bottom
+	style.corner_radius_bottom_right = corner_radius_bottom
+	get_node("back_color").set("custom_styles/panel",style)
 

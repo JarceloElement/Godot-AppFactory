@@ -94,10 +94,38 @@ var leader_conf_path = path_user+"/leader_conf.cfg"
 var DB_control_priority = 1
 var ACTIVE_DB_PATH = {"path":"","table_name":""} # [path,table_name]
 var post_request_dicc = {}
-var session_path = [path_user,"USERS"]
-var city_DB = "res://DB/tools_city.cfg"
+var session_path = {"path":path_user+"users.cfg","table_name":"USERS"}
+
+var city_DB_tool = path_user+"tools_city.cfg"
+var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
 
 
+var user_block: Dictionary = Dictionary({
+	"block_1":{
+		"pos_in_parent":1,
+		"user_name": "Player",
+		"block_build_type":1,
+		"roof_top_type":1,
+		"date_reg": "2021-12-27 16:48:33",
+		"date_update": "2021-12-27 16:48:33",
+		"building":{
+			"1":{
+				"title_adv":"home",
+				"building_type":1,
+				"roof_type":1,
+				"advice_type":1,
+				"neon_advice_type":1,
+				"wall_type":1
+			}
+		}
+	}
+	
+	
+})
+
+#var city_DB_tool = path_user+"tools_city.cfg"
+#var city_DB = "res://DB/tools_city.cfg"
+#var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
 
 
 
@@ -122,7 +150,7 @@ var line_edit_panel = preload("res://app_core/modules/form/line_edit_panel.tscn"
 
 
 # THEMES
-var theme_city_tools = load("res://trivie_game/gui_theme/scroll.tres")
+#var theme_city_tools = load("res://trivie_game/gui_theme/scroll.tres")
 var text_theme = load("res://app_core/themes/text_edit_theme.tres")
 
 
@@ -232,7 +260,6 @@ var popup_list = 0
 var popup_login = 0
 var popup_form_active = 0
 var popup_active = 0
-# var popup_tools_city = 0
 # var location_active = ""
 # var turn = ""
 var is_empty_field = 0
@@ -299,7 +326,7 @@ var HTTP_Request_result = {}
 #var Combo_products = preload("res://app_core/scn/elements/Combo_products.scn")
 #var DB_control = preload("res://app_core/scn/elements/DB_control.scn")
 #var Top_search_bar = preload("res://app_core/scn/elements/Top_search_bar.scn")
-#var PopUp_contact = preload("res://app_core/templates/english_trivie/elements/PopUp_contact.tscn")
+var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
 #var PopUp_list = preload("res://app_core/scn/elements/PopUp_list.scn")
 #var PopUp_signin = preload("res://app_core/scn/elements/PopUp_signin.scn")
 #var PopUp_signup = preload("res://app_core/scn/elements/PopUp_signup.scn")
@@ -309,7 +336,7 @@ var HTTP_Request_result = {}
 #var User_score = preload("res://app_core/scn/pages/english_trivie/elements/user_score.tscn")
 
 ## TRIVIE RESOURCE
-var Word_button = preload("res://trivie_game/Word_button.tscn")
+#var Word_button = preload("res://trivie_game/Word_button.tscn")
 
 # # Post DB conf
 # var INSTANCE = ""
@@ -331,7 +358,7 @@ var resul_report = ""
 # var next_product = 1
 
 # SESSION
-var SESSION = {"user_id":"1","user_name":"Player","wallet":"0"}
+var SESSION = {"user_id":"1","user_name":"Player","user_avatar":"1","wallet":"5000"}
 
 # OPEN-GRAPH PRODUCTS
 var p_id_product = ""
@@ -546,6 +573,21 @@ func _today_datetime():
 
 
 	hoy = str(hoy["year"])+"-"+mes+"-"+dia+" "+hora+":"+minu+":"+seg
+	return hoy
+	
+	# (day:26), (dst:False), (hour:0), (minute:20), (month:4), (second:36), (weekday:0), (year:2020)
+#	2020-04-26 00:18:41
+
+
+func _datetime():
+	var hoy = OS.get_datetime(0)
+	var mes = ""
+	var dia = ""
+	var hora = ""
+	var minu = ""
+	var seg = ""
+
+	hoy = hoy["hour"]+hoy["minute"]+hoy["second"]+hoy["day"]+hoy["month"]+hoy["year"]
 	return hoy
 	
 	# (day:26), (dst:False), (hour:0), (minute:20), (month:4), (second:36), (weekday:0), (year:2020)

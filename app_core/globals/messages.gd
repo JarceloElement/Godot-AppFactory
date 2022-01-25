@@ -123,6 +123,18 @@ var _money_simbol_nube = " Nubes"
 var _no_user_loged = "Debes iniciar sesión para comprar"
 var _config = "Configuaración"
 var _indicators = "Indicadores"
+var _value_build = "Valoración:"
+var _minutes = "minutos"
+var _hours = "horas"
+var _invest_time = "Tiempo de cierre"
+var _progress_invest = "Progreso"
+var _profit = "Ganancias"
+var _edit = "Editar"
+var _sell = "Negociar"
+var _configure = "Configurar"
+
+
+
 
 
 # - city game

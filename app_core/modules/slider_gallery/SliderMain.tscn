@@ -98,12 +98,13 @@ anchor_bottom = 0.0
 margin_top = 585.0
 margin_right = 300.0
 margin_bottom = 633.0
+Title_message = "Signup"
 title_size = 40
 corner_radius_lefttop = 10
 corner_radius_rigthbottom = 10
 border_width = 0
 ID_message = "scn"
-scn_path = "res://app_core/modules/responsiveApp/Dashboard.tscn"
+scn_path = "res://DemoApp/signup_form.tscn"
 
 [node name="Slider_2" parent="Slider_container/ParallaxBackground/VBoxContainer/Items" index="1" instance=ExtResource( 3 )]
 margin_left = 304.0
@@ -167,7 +168,10 @@ anchor_bottom = 0.0
 margin_top = 588.0
 margin_right = 300.0
 margin_bottom = 633.0
+Title_message = "Back"
 hover_color = Color( 0.921569, 0.921569, 0.921569, 1 )
+ID_message = "scn"
+scn_path = "res://DemoApp/Dashboard.tscn"
 
 [node name="MarginContainer" parent="Slider_container/ParallaxBackground/VBoxContainer" index="1"]
 margin_top = 633.0

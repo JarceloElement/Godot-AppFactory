@@ -72,8 +72,8 @@ __meta__ = {
 margin_top = 22.0
 margin_right = 285.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Title"
 valign = 1
 clip_text = true
@@ -98,6 +98,7 @@ custom_constants/margin_right = 0
 custom_constants/margin_top = 0
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 0
+color = Color( 0, 0.584314, 0.866667, 1 )
 
 [node name="Progres_bar_game" parent="elements" instance=ExtResource( 5 )]
 margin_right = 400.0
