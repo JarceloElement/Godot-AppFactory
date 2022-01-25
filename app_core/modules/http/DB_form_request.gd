@@ -111,6 +111,101 @@ func _ready():
 			queue_free()
 	
 	
+
+
+	# USER LOGIN
+	if form_request_type == "signin":
+
+		# lista de usuarios existentes
+		var session_path = get_node("/root/FuncApp").session_path[0]
+		var session_key = get_node("/root/FuncApp").session_path[1]
+		var users_array = []
+		# print("session_path",session_path)
+
+		var DB = $"/root/DbQuery"
+		var path = session_path
+		var field = "*" # default: *
+		var search = get_node("/root/FuncApp").array_field_data[0] # default * | busca solo el index, no recorre la linea
+		var ID_ = "*" # alone no section no search | default *
+		var where = [] # format: ["active,==,0"] | deafault []
+		var id_field = "id" # ID de los nombre de los campos (*)
+
+		var query = DB.conf_query(session_key,path,field,search,ID_,where,id_field)
+#		print("query:",query)
+
+		# si no hay resultados
+		if query != null:
+			if query["result"] == null:
+				var param_msg = ["request_form_user_no_exist",get_node("/root/Messages").send_form_DB_user_no_exist,"warning","111111","111111"]
+				for i in get_tree().get_nodes_in_group("alert"):
+					i.click_awesome("alert_show",param_msg)
+
+				print("User_NO_exist: ",get_node("/root/FuncApp").array_field_data[0])
+
+				get_node("/root/FuncApp").array_field_name = []
+				get_node("/root/FuncApp").array_field_data = []
+
+				return
+				queue_free()
+
+
+			# usuario existe
+			var user_name = query["result"]["user_name"]
+	#			print("user_name: ",user_name)
+			if get_node("/root/FuncApp").array_field_data[0] == user_name:
+				# carga la clave del usuario
+				var user_password = query["result"]["user_pass"]
+
+				# clave incorrecta | compara las claves
+				if user_password != get_node("/root/FuncApp").array_field_data[1]:
+	#				print("SESSION: ",user_password)
+					var param_msg = ["request_form_wrong_password",get_node("/root/Messages").signin_wrong_password,"warning","111111","111111"]
+					for i in get_tree().get_nodes_in_group("alert"):
+						i.click_awesome("alert_show",param_msg)
+
+					get_node("/root/FuncApp").array_field_name = []
+					get_node("/root/FuncApp").array_field_data = []
+
+					queue_free()
+
+
+				# clave correcta | iniciar session
+				else:
+					# carga la sesion
+					get_node("/root/FuncApp").SESSION = query["result"]
+	#					print(get_node("/root/FuncApp").SESSION)
+					
+					var user_gender = get_node("/root/FuncApp").SESSION["user_gender"]
+	#				print("SESSION CORRECT: ",user_name)
+					# saludo por genero
+					var param_msg = []
+					if user_gender == "Femenino":
+						param_msg = ["request_form_signin",get_node("/root/Messages").signin_finish_female+" "+user_name,"user","111111","111111"]
+					if user_gender == "Masculino":
+						param_msg = ["request_form_signin",get_node("/root/Messages").signin_finish_male+" "+user_name,"user","111111","111111"]
+
+					for i in get_tree().get_nodes_in_group("alert"):
+						i.click_awesome("alert_hide",param_msg)
+
+					for i in get_tree().get_nodes_in_group("click_awesome"):
+						i.click_awesome("add_popup_login",param_msg)
+
+					get_node("/root/FuncApp").array_field_name = []
+					get_node("/root/FuncApp").array_field_data = []
+
+					queue_free()
+
+
+
+
+
+
+
+
+
+
+
+
 	if form_request_type == "register":
 
 	#	print(get_node("/root/FuncApp").array_field_name)
@@ -475,87 +570,7 @@ func _ready():
 
 
 
-	# USER LOGIN
-	if form_request_type == "signin":
 
-		# lista de usuarios existentes
-		var session_path = get_node("/root/FuncApp").session_path[0]
-		var session_key = get_node("/root/FuncApp").session_path[1]
-		var users_array = []
-		# print("session_path",session_path)
-
-		var DB = $"/root/DbQuery"
-		var path = session_path
-		var field = "*" # default: *
-		var search = get_node("/root/FuncApp").array_field_data[0] # default * | busca solo el index, no recorre la linea
-		var ID_ = "*" # alone no section no search | default *
-		var where = [] # format: ["active,==,0"] | deafault []
-		var id_field = "id" # ID de los nombre de los campos (*)
-
-		var query = DB.conf_query(session_key,path,field,search,ID_,where,id_field)
-#		print("query:",query)
-
-		# si no hay resultados
-		if query != null:
-			if query["result"] == null:
-				var param_msg = ["request_form_user_no_exist",get_node("/root/Messages").send_form_DB_user_no_exist,"warning","111111","111111"]
-				for i in get_tree().get_nodes_in_group("alert"):
-					i.click_awesome("alert_show",param_msg)
-
-				print("User_NO_exist: ",get_node("/root/FuncApp").array_field_data[0])
-
-				get_node("/root/FuncApp").array_field_name = []
-				get_node("/root/FuncApp").array_field_data = []
-
-				return
-				queue_free()
-
-
-			# usuario existe
-			var user_name = query["result"]["user_name"]
-	#			print("user_name: ",user_name)
-			if get_node("/root/FuncApp").array_field_data[0] == user_name:
-				# carga la clave del usuario
-				var user_password = query["result"]["user_pass"]
-
-				# clave incorrecta | compara las claves
-				if user_password != get_node("/root/FuncApp").array_field_data[1]:
-	#				print("SESSION: ",user_password)
-					var param_msg = ["request_form_wrong_password",get_node("/root/Messages").signin_wrong_password,"warning","111111","111111"]
-					for i in get_tree().get_nodes_in_group("alert"):
-						i.click_awesome("alert_show",param_msg)
-
-					get_node("/root/FuncApp").array_field_name = []
-					get_node("/root/FuncApp").array_field_data = []
-
-					queue_free()
-
-
-				# clave correcta | iniciar session
-				else:
-					# carga la sesion
-					get_node("/root/FuncApp").SESSION = query["result"]
-	#					print(get_node("/root/FuncApp").SESSION)
-					
-					var user_gender = get_node("/root/FuncApp").SESSION["user_gender"]
-	#				print("SESSION CORRECT: ",user_name)
-					# saludo por genero
-					var param_msg = []
-					if user_gender == "Femenino":
-						param_msg = ["request_form_signin",get_node("/root/Messages").signin_finish_female+" "+user_name,"user","111111","111111"]
-					if user_gender == "Masculino":
-						param_msg = ["request_form_signin",get_node("/root/Messages").signin_finish_male+" "+user_name,"user","111111","111111"]
-
-					for i in get_tree().get_nodes_in_group("alert"):
-						i.click_awesome("alert_hide",param_msg)
-
-					for i in get_tree().get_nodes_in_group("click_awesome"):
-						i.click_awesome("add_popup_login",param_msg)
-
-					get_node("/root/FuncApp").array_field_name = []
-					get_node("/root/FuncApp").array_field_data = []
-
-					queue_free()
 
 
 

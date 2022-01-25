@@ -1,0 +1,6 @@
+id,icon,field_name,title,placeholder,default_value,type,secret_character,options,max_text,visible,null
+1,,user_name,Usuario o correo,Usuario o correo,,text,,,50,1,0
+2,,user_pass,Contraseña,Contraseña,,password,*,,50,1,0
+3,,user_gender,Género,Género,,option,,Femenino;Masculino,50,1,1
+4,,security_answer,Pregunta de seguridad,Pregunta de seguridad,,option,,Tu color favorito;Tu primera mascota;Segundo nombre de tu madre,50,1,0
+5,,security_response,Respuesta a tu pregunta,Respuesta a tu pregunta,,text,,,,1,0

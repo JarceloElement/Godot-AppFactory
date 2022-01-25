@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://app_core/modules/transitions/loading_bar.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.490196, 1, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[node name="Progres_bar_game" type="VBoxContainer"]
+show_behind_parent = true
+margin_right = 399.0
+margin_bottom = 2.0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+alignment = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bar" type="MarginContainer" parent="."]
+margin_top = 2.0
+margin_right = 399.0
+margin_bottom = 2.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = -3
+
+[node name="ProgressBar" type="ProgressBar" parent="bar"]
+margin_right = 399.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 0, 3 )
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+step = 1.0
+rounded = true
+percent_visible = false

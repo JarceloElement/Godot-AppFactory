@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="AppFactory"
+run/main_scene="res://splash/splash.tscn"
+boot_splash/image="res://app_core/images/splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+FuncApp="*res://app_core/globals/func_app.gd"
+Messages="*res://app_core/globals/messages.gd"
+DbQuery="*res://app_core/globals/DB_query.gd"
+Loading="*res://app_core/globals/loading/loading.tscn"
+TTS="*res://addons/godot-tts/TTS.gd"
+SliderControl="*res://app_core/globals/SliderControl.gd"
+
+[display]
+
+window/size/width=400
+window/size/height=700
+window/handheld/orientation="sensor"
+window/ios/hide_home_indicator=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

@@ -18,7 +18,7 @@ __meta__ = {
 
 [node name="Background_scene" parent="." instance=ExtResource( 1 )]
 show_texture = false
-back_color = Color( 1, 1, 1, 1 )
+back_color = Color( 0.921569, 0.921569, 0.921569, 1 )
 
 [node name="Viewer" parent="." instance=ExtResource( 13 )]
 anchor_top = 0.0857143
@@ -27,8 +27,9 @@ anchor_top = 0.0857143
 margin_bottom = 630.0
 
 [node name="List" parent="Viewer/ScrollContainer" index="0"]
-margin_bottom = 118.0
-form_path = "form_signup.cfg"
+margin_bottom = 121.0
+custom_constants/separation = 5
+form_db_name = "form_signup.cfg"
 form_table_name = "SIGNUP_FORM"
 DB_name = "users.cfg"
 DB_table = "USERS"
@@ -46,9 +47,9 @@ ID_message = "form_send"
 [node name="DB_create" parent="Viewer/ScrollContainer/List" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 54.0
+margin_top = 57.0
 margin_right = 360.0
-margin_bottom = 118.0
+margin_bottom = 121.0
 csv_to_DB = [ true, "res://DB/form_signup.txt" ]
 
 [node name="Alert" parent="Viewer" instance=ExtResource( 3 )]

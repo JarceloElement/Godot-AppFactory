@@ -1,0 +1,285 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://app_core/modules/alert/Alert.tscn" type="PackedScene" id=1]
+[ext_resource path="res://app_core/modules/panel_round/Panel_round.tscn" type="PackedScene" id=2]
+[ext_resource path="res://app_core/fonts_preload/DroidSans_20.font" type="BitmapFont" id=3]
+[ext_resource path="res://app_core/modules/popup/label_from_message.gd" type="Script" id=4]
+[ext_resource path="res://app_core/fonts_preload/Roboto-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://app_core/modules/popup/popup_contact.gd" type="Script" id=7]
+[ext_resource path="res://app_core/modules/buttons/button_border.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.00509071, 0.00463867, 0.0625, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 4
+
+[sub_resource type="DynamicFont" id=9]
+size = 25
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.945098, 0.945098, 0.945098, 1 )
+border_color = Color( 1, 0, 0.470588, 1 )
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.866667, 0.996078, 1, 1 )
+border_color = Color( 1, 0, 0.470588, 1 )
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/MarginContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( -4, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 510 ), Vector2( 0, -17 ), Vector2( 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/MarginContainer:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="PopUp_contact" type="CanvasLayer"]
+script = ExtResource( 7 )
+title = "_popup"
+message_btn_R = "popup_contact_close"
+
+[node name="back_close" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 3.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = -20
+custom_constants/margin_top = -20
+custom_constants/margin_left = -20
+custom_constants/margin_bottom = -20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="back_close"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 420.0
+margin_bottom = 717.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+action_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -204.0
+margin_top = -201.0
+margin_right = 200.0
+margin_bottom = 349.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+margin_right = 404.0
+margin_bottom = 550.0
+mouse_filter = 1
+custom_constants/margin_right = 30
+custom_constants/margin_top = 150
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 200
+
+[node name="Panel_round" parent="MarginContainer/MarginContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 150.0
+margin_right = 374.0
+margin_bottom = 350.0
+color = Color( 1, 1, 1, 1 )
+corner_radius_top = 7
+corner_radius_bottom = 7
+
+[node name="back_color" parent="MarginContainer/MarginContainer/Panel_round" index="0"]
+margin_right = 344.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="Buttons" type="MarginContainer" parent="MarginContainer/MarginContainer"]
+margin_left = 30.0
+margin_top = 150.0
+margin_right = 374.0
+margin_bottom = 350.0
+mouse_filter = 1
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/Buttons"]
+margin_right = 344.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+mouse_filter = 2
+alignment = 2
+
+[node name="Title" type="MarginContainer" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer"]
+margin_right = 344.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 0
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/Title"]
+margin_left = 20.0
+margin_right = 324.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 125, 43 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.195312, 0.195312, 0.195312, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "title"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 4 )
+text_from_mesasge = "_contact_by"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer"]
+visible = false
+margin_top = 57.0
+margin_right = 344.0
+margin_bottom = 126.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="phone" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_right = 176.0
+margin_bottom = 126.0
+icon = "phone"
+
+[node name="telegram" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_right = 267.0
+margin_bottom = 126.0
+icon = "telegram"
+
+[node name="whatsapp" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer" instance=ExtResource( 6 )]
+visible = false
+margin_right = 538.0
+margin_bottom = 126.0
+icon = "whatsapp"
+
+[node name="Alert" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 57.0
+margin_right = 344.0
+margin_bottom = 167.0
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer"]
+margin_top = 130.0
+margin_right = 344.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 70 )
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="button_border_L" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer1" instance=ExtResource( 9 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 170.0
+margin_bottom = 70.0
+back_color = Color( 0.866667, 0.996078, 1, 1 )
+font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+corner_radius_lefttop = 0
+corner_radius_rigthtop = 0
+corner_radius_rigthbottom = 0
+border_width = 0
+ID_message = "popup_contact_close"
+
+[node name="Button" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer1/button_border_L" index="0"]
+margin_right = 170.0
+margin_bottom = 70.0
+custom_colors/font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_colors/font_color_hover = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_colors/font_color_pressed = Color( 0.180392, 0.180392, 0.180392, 1 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+
+[node name="button_border_R" parent="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer1" instance=ExtResource( 9 )]
+margin_left = 174.0
+margin_top = 0.0
+margin_right = 344.0
+margin_bottom = 70.0
+back_color = Color( 1, 0.937255, 0.960784, 1 )
+font_color = Color( 0.254902, 0.254902, 0.254902, 1 )
+corner_radius_lefttop = 0
+corner_radius_rigthtop = 0
+corner_radius_leftbottom = 0
+border_width = 0
+ID_message = "popup_contact_close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade"
+playback_speed = 2.0
+anims/fade = SubResource( 6 )
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
+autoplay = "in"
+playback_speed = 2.0
+anims/in = SubResource( 7 )
+"anims/in 2" = SubResource( 7 )
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer1/button_border_L/Button" to="." method="_on_Button_pressed"]
+
+[editable path="MarginContainer/MarginContainer/Panel_round"]
+[editable path="MarginContainer/MarginContainer/Buttons/VBoxContainer/HBoxContainer1/button_border_L"]

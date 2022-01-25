@@ -77,7 +77,7 @@ func click_awesome(ID_message,message_param):
 		color_icon_activo = message_param
 		$icon.set("custom_colors/font_color",color_icon_activo)
 
-	if ID_message == "paginacion" and ID == int(2):
+	if ID_message == "paginacion" and int(ID) == int(2):
 		if get_name() == str(message_param):
 			$icon.set("custom_colors/font_color",color_icon_activo)
 		else:

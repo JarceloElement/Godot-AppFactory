@@ -4,7 +4,6 @@ Creation of GUI and modules for multiplatform applications. Graphic design and 3
 **How does it work**
 Only copy the directory (app_core) if you want to use all the app modules, otherwise choose one in the (app_core) folder and paste it in your project directory.
 
-You can clone dev repository and open it directly with Godot and you will be able to review each node of the project.
 
 **Join the project with your support**
 https://www.patreon.com/appfactory

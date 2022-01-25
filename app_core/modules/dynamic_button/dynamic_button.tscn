@@ -3,7 +3,11 @@
 [ext_resource path="res://app_core/modules/dynamic_button/dynamic_button.gd" type="Script" id=1]
 [ext_resource path="res://app_core/fonts_preload/Roboto-Regular.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0, 0.470588, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -16,7 +20,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 4
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -29,14 +33,11 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 draw_center = false
 
-[sub_resource type="DynamicFont" id=4]
-size = 25
-font_data = ExtResource( 2 )
-
 [node name="button_dynamic" type="HBoxContainer"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 anchor_right = 1.0
 anchor_bottom = 0.0642857
 rect_min_size = Vector2( 0, 45 )
@@ -52,18 +53,19 @@ __meta__ = {
 font = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 162.0
-margin_right = 238.0
+margin_left = 163.0
+margin_right = 237.0
 margin_bottom = 45.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_focus = Color( 1, 0, 0.470588, 1 )
 custom_colors/font_color = Color( 1, 0, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 0, 0.470588, 1 )
-text = "Button"
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+text = "  Title  "

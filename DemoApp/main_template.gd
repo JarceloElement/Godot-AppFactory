@@ -17,6 +17,8 @@ export var scn_back_btn = "no_exit"
 var size_list = 100
 
 
+
+
 func _ready(): 
 	
 #	print(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS))
@@ -375,18 +377,7 @@ func request_form():
 	
 
 
-	"""
-	elif get_node("boton_abajo/VBoxContainer/HBoxContainer_inicio/MarginContainer4/Button").get_text() == "Continuar":
-		get_node("Form").show()
-		get_node("fondo blanco/VBoxContainer").hide()
-		get_node("boton_abajo/VBoxContainer/HBoxContainer_inicio/MarginContainer4/Button").set_text("Registrar")
-		# limpiar campos
-		get_node("/root/FuncApp").array_form = []
 
-		var mensajes = get_tree().get_nodes_in_group("limpiar_campos")
-		for i in mensajes:
-			i.limpiar_campos() # va a los campos del formulario
-	"""
 
 
 
