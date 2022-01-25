@@ -6,6 +6,12 @@ Only copy the directory (app_core) if you want to use all the app modules, other
 
 You can clone this repository and open it directly with Godot and you will be able to review each node of the project.
 
+**Join the project with your support**
+https://www.patreon.com/appfactory
+
+**Contact the team**
+**Twitter:** @JarceloElement
+
 **-- APP_CORE --**
 
 **GLOBALS**
