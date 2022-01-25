@@ -1,19 +1,29 @@
-# Godot | AppFactory 3.X
-Creation of GUI and modules for multiplatform applications.
+# Godot | AppFactory 3.X | 4.x
+Creation of GUI and modules for multiplatform applications. Graphic design and 3D modeling.
 
+**How does it work**
+Only copy the directory (app_core) if you want to use all the app modules, otherwise choose one in the (app_core) folder and paste it in your project directory.
 
-**DOC**
+You can clone this repository and open it directly with Godot and you will be able to review each node of the project.
+
+**Join the project with your support**
+https://www.patreon.com/appfactory
+
+**Contact the team**
+**Twitter:** @JarceloElement
+
+**-- APP_CORE --**
 
 **GLOBALS**
 
 |   |               |                                                          |                                                                    |                  |
 | - | ------------- | -------------------------------------------------------- | ------------------------------------------------------------------ | ---------------- |
 |   | **Global**    | **Dependency**                                           | **Description**                                                    | **Demostration** |
-| 1 | FuncApp       | /controller/ func\_app.tscn                              | Setting of App, colors, stytle, size, global vars                  | video            |
-| 2 | Messages      | /controller/ messages.gd                                 | Translate tags a text of App                                       |                  |
-| 3 | SliderControl | /controller/ slider.gd                                   | Tools and vars for input system                                    |                  |
-| 4 | DbQuery       | /controller/ <span class="underline">DB\_query.gd</span> | SQL alternative                                                    |                  |
-| 5 | Loading       | /controller/ loading.gd                                  | Scene change, background loading, navigation history on back click |                  |
+| 1 | FuncApp       | /gloabals/ func\_app.tscn                              | Setting of App, colors, stytle, size, global vars                  | video            |
+| 2 | Messages      | /gloabals/ messages.gd                                 | Translate tags a text of App                                       |                  |
+| 3 | SliderControl | /gloabals/ slider.gd                                   | Tools and vars for input system                                    |                  |
+| 4 | DbQuery       | /gloabals/ <span class="underline">DB\_query.gd</span> | SQL alternative                                                    |                  |
+| 5 | Loading       | /gloabals/ loading.gd                                  | Scene change, background loading, navigation history on back click |                  |
 
 **MODULES | NODE**
 
@@ -94,7 +104,7 @@ Creation of GUI and modules for multiplatform applications.
 <td>10</td>
 <td>DB_create</td>
 <td></td>
-<td>Convert CSV to DB.cfg, copy DB from proyect to local SD</td>
+<td>Convert .csv/.txt to DB.cfg</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -106,7 +116,7 @@ Creation of GUI and modules for multiplatform applications.
 </tr>
 <tr class="odd">
 <td>12</td>
-<td>Register Form</td>
+<td>Registration Form</td>
 <td><p><strong>Nodes:</strong></p>
 <p>1- Viewer</p>
 <p>2- Alert (in tree)</p>
@@ -145,10 +155,11 @@ Creation of GUI and modules for multiplatform applications.
 <tr class="even">
 <td></td>
 <td>Alert</td>
-<td><p>var param = ["from:",text,"icon","","color"]</p>
+<td><p>var param = ["from:",text,"icon","color_text","color_icon"]</p>
 <p>for i in get_tree().get_nodes_in_group("alert"):</p>
 <p>i.click_awesome("alert_show",param)</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+
