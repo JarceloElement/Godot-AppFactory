@@ -159,29 +159,6 @@ var npc_dialog_str = "Hello, hola, welcome, bienvenido"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # HTTP
 var conexion_status = 1
 var HOST = "http://10.42.0.1/anuncios/"

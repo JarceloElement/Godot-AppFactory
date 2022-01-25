@@ -1,5 +1,8 @@
-# Godot | AppFactory 3.X
-Creation of GUI and modules for multiplatform applications. Graphic design and 3D modeling
+# Godot | AppFactory 3.X | 4.x
+Creation of GUI and modules for multiplatform applications. Graphic design and 3D modeling.
+
+**How does it work**
+Only copy the directory (app_core) if you want to use all the app modules, otherwise choose one in the app_core folder and paste it in your project directory.
 
 
 **-- APP_CORE --**
