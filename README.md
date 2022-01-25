@@ -2,18 +2,18 @@
 Creation of GUI and modules for multiplatform applications. Graphic design and 3D modeling
 
 
-**DOC OF APP_CORE PROJECT**
+**-- APP_CORE --**
 
 **GLOBALS**
 
 |   |               |                                                          |                                                                    |                  |
 | - | ------------- | -------------------------------------------------------- | ------------------------------------------------------------------ | ---------------- |
 |   | **Global**    | **Dependency**                                           | **Description**                                                    | **Demostration** |
-| 1 | FuncApp       | /controller/ func\_app.tscn                              | Setting of App, colors, stytle, size, global vars                  | video            |
-| 2 | Messages      | /controller/ messages.gd                                 | Translate tags a text of App                                       |                  |
-| 3 | SliderControl | /controller/ slider.gd                                   | Tools and vars for input system                                    |                  |
-| 4 | DbQuery       | /controller/ <span class="underline">DB\_query.gd</span> | SQL alternative                                                    |                  |
-| 5 | Loading       | /controller/ loading.gd                                  | Scene change, background loading, navigation history on back click |                  |
+| 1 | FuncApp       | /gloabals/ func\_app.tscn                              | Setting of App, colors, stytle, size, global vars                  | video            |
+| 2 | Messages      | /gloabals/ messages.gd                                 | Translate tags a text of App                                       |                  |
+| 3 | SliderControl | /gloabals/ slider.gd                                   | Tools and vars for input system                                    |                  |
+| 4 | DbQuery       | /gloabals/ <span class="underline">DB\_query.gd</span> | SQL alternative                                                    |                  |
+| 5 | Loading       | /gloabals/ loading.gd                                  | Scene change, background loading, navigation history on back click |                  |
 
 **MODULES | NODE**
 
@@ -145,7 +145,7 @@ Creation of GUI and modules for multiplatform applications. Graphic design and 3
 <tr class="even">
 <td></td>
 <td>Alert</td>
-<td><p>var param = ["from:",text,"icon","","color"]</p>
+<td><p>var param = ["from:",text,"icon","color_text","color_icon"]</p>
 <p>for i in get_tree().get_nodes_in_group("alert"):</p>
 <p>i.click_awesome("alert_show",param)</p></td>
 <td></td>
