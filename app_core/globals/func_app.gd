@@ -55,7 +55,7 @@ var GLOBAL = {}
 var PopUp_contact_var = 1
 var Total_list_field = 0
 var field_instance_name = "" # viene de DB_control
-
+var Request_status = 0
 
 
 
@@ -98,34 +98,6 @@ var session_path = {"path":path_user+"users.cfg","table_name":"USERS"}
 
 var city_DB_tool = path_user+"tools_city.cfg"
 var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
-
-
-var user_block: Dictionary = Dictionary({
-	"block_1":{
-		"pos_in_parent":1,
-		"user_name": "Player",
-		"block_build_type":1,
-		"roof_top_type":1,
-		"date_reg": "2021-12-27 16:48:33",
-		"date_update": "2021-12-27 16:48:33",
-		"building":{
-			"1":{
-				"title_adv":"home",
-				"building_type":1,
-				"roof_type":1,
-				"advice_type":1,
-				"neon_advice_type":1,
-				"wall_type":1
-			}
-		}
-	}
-	
-	
-})
-
-#var city_DB_tool = path_user+"tools_city.cfg"
-#var city_DB = "res://DB/tools_city.cfg"
-#var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
 
 
 
@@ -213,26 +185,12 @@ var npc_dialog_str = "Hello, hola, welcome, bienvenido"
 # HTTP
 var conexion_status = 1
 var HOST = "http://10.42.0.1/anuncios/"
-#var URL_POST = "http://infoapp.lanube.com.ve/consulta.php"
-var URL_POST = "http://10.42.0.1/nube_app/index.php?page=app&"
-# var URL_POST = "http://10.42.0.1/nube_app1/consulta_app.php"
-#var URL_POST = "http://192.168.1.11/infocentro/consulta.php"
-var Request_status = 0
 
 
-# slider | scroll
-# var slider_x = 0
-# var slider_y = 0
-# var slider_y_positivo = 0
-# var slider_pos_global = 0
+
 var scroll_top_end = 0
 var temp_total_show = 0
 var temp_pos_scroll = 0
-# var x_posi = 0
-# var y_posi = 0
-# var blok = 0
-# var eje_activo = 0
-# var rel_y = 0
 
 # vars
 var screen_size = ""
@@ -240,28 +198,13 @@ var responsive_size = Vector2()
 var responsive_margin_L = ""
 var responsive_margin_R = ""
 var responsive_pos = Vector2()
-# var menu_tipo = 1
-# var N_mostrar = 0
-# #var Total_list_field = 0
-# var activeScene = null
-# var scene_tipo = 0
-# var reporte_tipo = 0
-# var escena_tipo = 0
 var scene_ID = 1
-# var number_pick_show = 0
-# var visita = 1
-# var notificar_en_dasboard = 1
-# var buscar = 0
-# #var menu_hide = 1
 var number_pick_is_visible = 0
 var preview_active = 0
 var popup_list = 0
-# var popup_contact = 0
 var popup_login = 0
 var popup_form_active = 0
 var popup_active = 0
-# var location_active = ""
-# var turn = ""
 var is_empty_field = 0
 var next_field_form = 1
 var active_field = 0
@@ -269,93 +212,24 @@ var active_field = 0
 # # animate | form
 var size_list = 100
 var scroll_D = 0
-# var editando = 0
 var visible_slider_list = 1
 var visible_selec = 1
 var mov_slider = 0
 
-# var active_message_param = [] # 0=icon | 1=message
 var array_form = []
 var array_field_name = []
 var array_field_data = []
 
-# var array_form_request_response = []
-# var estado_activo = 0
-# var campo_form_vacio = 0
-# var tipo_campo_editando = 0
-
 
 #  param request
 var HTTP_Request_result = {}
-# var item_1 = []
-# var item_2 = []
-# var item_3 = []
-# var item_4 = []
-# var item_5 = []
-# var item_6 = []
-# var item_7 = []
-# var item_8 = []
-# var item_9 = []
-# var item_10 = []
-# var item_11 = []
-# var item_12 = []
-# var fecha_registros = []
-# var total_hoy_registro = 1
-# var estados_hoy = 0
 
 
-# DB control
-# var hacer_lista = 0
-# var DB_control_priority = 1
-
-
-# -- Instances --
-# HTTPRequest
-#var reporte_general = preload("res://app_core/scn/HTTPRequest_dashboard.scn")
-#var HTTPRequest_form = preload("res://app_core/scn/http/HTTP_form.tscn")
-#var HTTPRequest_form = preload("res://app_core/assets/http/DB_form_request.tscn")
-#var HTTP_control = preload("res://app_core/scn/elements/HTTP_control.scn")
-#var download_image = preload("res://app_core/scn/elements/Download_image.scn")
-#
-## SQL ITEM REPORT
-#var message = preload("res://app_core/scn/elements/campo_reporte.scn")
-# var product = preload("res://app_core/scn/elements/Product_1.scn")
-#var Category = preload("res://app_core/scn/elements/category.scn")
-#var product_image = preload("res://app_core/scn/elements/Image_preview.scn")
-#var product_preview = preload("res://app_core/scn/elements/Preview.scn")
-#var Combo_products = preload("res://app_core/scn/elements/Combo_products.scn")
-#var DB_control = preload("res://app_core/scn/elements/DB_control.scn")
-#var Top_search_bar = preload("res://app_core/scn/elements/Top_search_bar.scn")
 var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
-#var PopUp_list = preload("res://app_core/scn/elements/PopUp_list.scn")
-#var PopUp_signin = preload("res://app_core/scn/elements/PopUp_signin.scn")
-#var PopUp_signup = preload("res://app_core/scn/elements/PopUp_signup.scn")
-#var PopUp_user_edit = preload("res://app_core/scn/elements/PopUp_user_edit.scn")
-#var PopUp_pass_recovery = preload("res://app_core/scn/elements/PopUp_pass_recovery.scn")
-#var PopUp_score = preload("res://app_core/scn/pages/english_trivie/elements/PopUp_score.scn")
-#var User_score = preload("res://app_core/scn/pages/english_trivie/elements/user_score.tscn")
 
-## TRIVIE RESOURCE
-#var Word_button = preload("res://trivie_game/Word_button.tscn")
 
-# # Post DB conf
-# var INSTANCE = ""
-# var ITEM_TYPE = ""
-# var SQL_DB_NAME = ""
-# var SQL_DB_NAME_score = ""
-# # var DB_PATH = ""
-# var SQL_TABLE_NAME = ""
-# var SQL_PARAM = ""
-# var TABLE_ITEM_REF = ""
-# var ORDER_BY = ""
-# var field_for_search = []
-# var parent_category = 0
-
-# var DB_ext = ".db"
 var total_report = 0
 var resul_report = ""
-# var view_mode = 1
-# var next_product = 1
 
 # SESSION
 var SESSION = {"user_id":"1","user_name":"Player","user_avatar":"1","wallet":"5000"}
