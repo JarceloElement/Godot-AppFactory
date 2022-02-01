@@ -2,10 +2,8 @@ extends MarginContainer
 
 
 var popup_form_active = 0
-
 var scroll_pos_y = 0.0
 var scroll_pulso = 1
-
 var pos_scroll_y = 0
 var mov_refresh = 0
 
@@ -25,18 +23,10 @@ func _ready():
 	get_node("ScrollContainer").add_to_group("scroll_form")
 
 #	set_theme(get_node("/root/FuncApp").tema_awesome)
-
 #	set_theme(get_node("/root/FuncApp").theme_city_tools)
 
 
 	scroll_pos_y = get_node("ScrollContainer").get_position().y 
-
-
-
-	
-
-	pass
-
 
 
 
@@ -76,8 +66,6 @@ func _input(event):
 
 
 
-
-
 			if get_node("/root/SliderControl").rel_y > 0 and get_node("ScrollContainer").get_v_scroll()==0 and (get_node("/root/FuncApp").scroll_top_end == 0 or get_node("/root/FuncApp").scroll_top_end == 100):
 				# ocultar icono refresh
 				for i in get_tree().get_nodes_in_group("click_awesome"):
@@ -113,25 +101,18 @@ func _input(event):
 					i.click_awesome("pos_scroll_y_down",str(pos_scroll_y))
 
 
-
-
-
-
 	if event is InputEventScreenTouch: 
 
 		if !event.pressed:
-
 			# ACTIVAR PAGINACION
 			if get_node("ScrollContainer").get_position().y >= 10 and get_node("/root/FuncApp").preview_active == 0: 
-				get_node("ScrollContainer/List").pag_atras()
+				get_node("ScrollContainer/List").page_back ()
 				scroll_pulso = 0
 				
 			if get_node("ScrollContainer").get_position().y <= -10 and get_node("/root/FuncApp").preview_active == 0: 
-				get_node("ScrollContainer/List").pag_adelante()
+				get_node("ScrollContainer/List").page_forward()
 				scroll_pulso = 0
 
-
-			
 			# ----- VOLVER scroll container al sitio----
 			# BAJAR
 			if get_node("/root/FuncApp").scroll_top_end == 0 and get_node("/root/SliderControl").y_posi == 0:
@@ -146,18 +127,12 @@ func _input(event):
 			pos_scroll_y = 0
 			get_node("ScrollContainer").set_position(Vector2(get_node("ScrollContainer").get_position().x,pos_scroll_y/20)) 
 
-
 			# ocultar icono
 			if pos_scroll_y == 0:
 				# anima el boton de refresh
 				for i in get_tree().get_nodes_in_group("click_awesome"):
 					i.click_awesome("pos_scroll_y_all",str(pos_scroll_y))
-
-
-
 	# print(mov_refresh," | ",get_owner().get_node("Form_viewer").get_size().y)
-
-
 
 
 
@@ -172,12 +147,10 @@ func _process(delta):
 # #			$ScrollContainer/List/Label.set_text(get_node("/root/FuncApp").path_data)
 # 		$ScrollContainer/List/Label.set_text("get_virtual_keyboard_height: "+str(OS.get_virtual_keyboard_height()))
 
-
 	#---- POSICION DEL SCROLL ------
 	if get_node("ScrollContainer").get_v_scroll() == 0 and get_node("/root/FuncApp").scroll_top_end != 0: # top
 		get_node("/root/FuncApp").scroll_top_end = 0
 
-		#----||| HACER BOTON CON ICONO AWESOME O LABEL |||-------	
 		var _go_top_button = get_tree().get_nodes_in_group("_go_top_button")
 		for i in _go_top_button:
 			if i.button_enabled == 1:
@@ -214,16 +187,6 @@ func click_awesome(id_message,message_text):
 	if id_message == "btn" and message_text == "gotop":
 		# get_node("ScrollContainer").set_v_scroll(0)
 		pass
-	
-# 	if id_message == "_enviar_registros":
-# 		hide()
-# 	if id_message == "_continuar":
-# 		show()
-	
-# 	if id_message == "hide" and get_owner().get("is_login") == 1:
-# 		hide()
-# #	print("gotop: ",id_mensaje,message_text)
-
 
 
 func _on_Area2D_area_enter( area ):

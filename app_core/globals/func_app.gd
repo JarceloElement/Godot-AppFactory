@@ -7,11 +7,7 @@ export var color_option_field_body = Color("404040")
 export var color_show_pass_icon_act = Color("d2205d")
 export var color_show_pass_icon_inact = Color("c3c3c3")
 
-
-
-
 var scroll_top = 1
-
 
 # mobile | telefono
 # map-marker | direccion
@@ -57,11 +53,6 @@ var Total_list_field = 0
 var field_instance_name = "" # viene de DB_control
 var Request_status = 0
 
-
-
-
-
-
 # ---- DB ----
 var dir_new = Directory.new()
 var export_DB_to_user = true
@@ -74,8 +65,6 @@ var dir_name_image = "/Images"
 var dir_name_data = "/Data"
 var dir_name_user = OS.get_user_data_dir()+"/DB"
 var path
-
-
 
 	# OS.get_system_dir(_OS.SYSTEM_DIR_DOWNLOADS)
 	# OS.get_system_dir(NOTIFICATION_WM_GO_BACK_REQUEST
@@ -100,11 +89,6 @@ var city_DB_tool = path_user+"tools_city.cfg"
 var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
 
 
-
-
-
-
-
 # INSTANCES
 #var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
 var HTTPRequest_form = preload("res://app_core/modules/http/DB_form_request.tscn")
@@ -112,12 +96,6 @@ var HTTPRequest_form = preload("res://app_core/modules/http/DB_form_request.tscn
 var line_edit_panel = preload("res://app_core/modules/form/line_edit_panel.tscn") # change
 #var PopUp_field_edit = preload("res://SocialApp/PopUp_field_edit.tscn")
 #var Field_conf = preload("res://SocialApp/field_conf.tscn")
-
-# POPUP
-#var PopUp_login = preload("res://app_core/modules/popup/PopUp_login.tscn")
-
-
-
 
 
 
@@ -127,36 +105,17 @@ var text_theme = load("res://app_core/themes/text_edit_theme.tres")
 
 
 
-
-
-
-
-
 var file_path = "res://examples/file.txt"
 var conf_path = "res://DB/vocabulario.cfg"
 var csv_path = "res://DB/vocabulario.csv"
 var JSON_path = "res://examples/file.json"
 
-
-
-
-
 var line = []
-
 var data_string = " "
-
-
-
-
-
-
 
 var tts_type = 0
 var output = []
 var npc_dialog_str = "Hello, hola, welcome, bienvenido"
-
-
-
 
 
 # HTTP
@@ -237,22 +196,18 @@ var p_url = ""
 
 
 
-# datos de la partida
-var total_answer_in_trivie = 0
-var user_game_name = 0
-var user_correct_answer = 0
-var user_incorrect_answer = []
-var user_game_time = 0
+# # datos de la partida
+# var total_answer_in_trivie = 0
+# var user_game_name = 0
+# var user_correct_answer = 0
+# var user_incorrect_answer = []
+# var user_game_time = 0
 
 
 
 
 # hacer captura de un nodo
 #	img = get_viewport().get_screen_capture().get_rect(imagenode_rect)
-
-
-# var array_scn_loaded = []
-# var last_scn_path = ""
 
 
 
@@ -314,7 +269,6 @@ func tts_android(param):
 	TTS.speak(npc_dialog_str)
 	
 	
-	
 func tts_espeak(param): # 1: idioma, 2: frase
 	tts_type = 1
 	npc_dialog_str = param[0]
@@ -333,37 +287,36 @@ func _read():
 #     -a 40 # volumen
 #     -p 0  # tono de la voz
 
-
-		if tts_type == 1:
-		
-			# INGLES
-			# hombre
+	if tts_type == 1:
+	
+		# INGLES
+		# hombre
 #			OS.execute("espeak", ["-vm3", "-s 160", "-p 30", "-w", "test.wav", npc_dialog_str], true, output)
 #			OS.execute("espeak", ["-vm3", "-s 160", "-p 60", npc_dialog_str], false, output)
-			
-			# mujer
-		#	OS.execute("espeak", ["-vf3", "-s 150", "-p 60", "-w", "test.wav", npc_dialog_str], true, output)
-			OS.execute("espeak", ["-vf3", "-s 160", "-p 60", npc_dialog_str], false, output)
+		
+		# mujer
+	#	OS.execute("espeak", ["-vf3", "-s 150", "-p 60", "-w", "test.wav", npc_dialog_str], true, output)
+		OS.execute("espeak", ["-vf3", "-s 160", "-p 60", npc_dialog_str], false, output)
 
-			# CASTELLANO
-			# hombre	
-		#	OS.execute("espeak", ["-ves", "-s 160", "-p 60", "-w", "test.wav", npc_dialog_str], true, output)
-		#	OS.execute("espeak", ["-vmb-es1", "-s 230", "-p 50", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
-		#	OS.execute("espeak", ["-ves+m3", "-s 150", "-p 60", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
-			
-			# mujer
-	#		OS.execute("espeak", ["-ves+f3", "-s 160", "-p 70", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
+		# CASTELLANO
+		# hombre	
+	#	OS.execute("espeak", ["-ves", "-s 160", "-p 60", "-w", "test.wav", npc_dialog_str], true, output)
+	#	OS.execute("espeak", ["-vmb-es1", "-s 230", "-p 50", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
+	#	OS.execute("espeak", ["-ves+m3", "-s 150", "-p 60", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
+		
+		# mujer
+#		OS.execute("espeak", ["-ves+f3", "-s 160", "-p 70", "-a 100", "-w", "test.wav", npc_dialog_str], true, output)
 #			OS.execute("espeak", ["-ves+f3", "-s 160", "-p 70", npc_dialog_str], false, output)
 
-			# OTROS
-		#	OS.execute("gtts-cli", ["-l", "-o", "-w", "test.wav", npc_dialog_str], true, output)
-		#	OS.execute("festival", ["-tts", "-w", "test.wav", npc_dialog_str], true, output)
-			
+		# OTROS
+	#	OS.execute("gtts-cli", ["-l", "-o", "-w", "test.wav", npc_dialog_str], true, output)
+	#	OS.execute("festival", ["-tts", "-w", "test.wav", npc_dialog_str], true, output)
+		
 #			OS.execute("espeak", ["-ves+f3", "-s 160", "-p 60", npc_dialog_str], false, output)
-			
-			# reproduce el audio
-	#		OS.execute("aplay", ["test.wav", "&"], false, output)
-			
+		
+		# reproduce el audio
+#		OS.execute("aplay", ["test.wav", "&"], false, output)
+		
 
 
 

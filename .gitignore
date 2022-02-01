@@ -1,5 +1,10 @@
 NOTES.txt
-.import
-USERS
-*.md5
-*.stex
+
+# Godot-specific ignores
+.import/
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+/USERS
+app_core/globals/DB_query_copy.gd

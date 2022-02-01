@@ -13,41 +13,24 @@ var i_where = 0
 #var file_path = "res://examples/file.txt"
 #var path = "res://DB/vocabulario.cfg"
 #var csv_path = "res://DB/vocabulario.csv"
+
 var JSON_path = "res://DB/file.json"
-
-
-
 var line = []
-
 var data_string = " "
 
 
 
-# This is a valid dictionary.
-# To access the string "Nested value" below, use `my_dir.sub_dir.sub_key` or `my_dir["sub_dir"]["sub_key"]`.
-# Indexing styles can be mixed and matched depending on your needs.
-var my_dict = {
-	"house": ["casa","jaus"],
-	"car": "carro",
-	"horse": "caballo",
-	"hour": "hora",
-	"sub_dict": {"sub_key": "Nested value"},
-}
 
 
 
 
 func _ready():
 
-	
-#	my_dict["house"] = "hogar" # asigna valor
-#	print(my_dict["house"]) # imprime el valor de la var
 
 
 #	print( $"/root/FuncApp".save_csv_to_json("res://examples/file.csv") )
 	
 #	print( $"/root/FuncApp".save_csv_to_configfile("res://DB/tools_city.csv","res://DB/tools_city.cfg",",",0) )
-
 
 
 #	print( $"/root/FuncApp".load_csv("res://examples/file.csv", "*") )
@@ -157,7 +140,6 @@ func save_to_csv(path, param):
 #	print("save_to_csv: ",string_data)
 	
 	# SAVE TO CSV
-	
 	# crea el archivo si no esxiste
 	var file_store: File = File.new()
 	var dir_new = Directory.new()
@@ -458,27 +440,9 @@ func save_dict_configFile(path,table_name,key,dicc_param):
 	var err = config.load(path)
 	if err == OK: # If not, something went wrong with the file loading
 		pass
-	
-	# var autoincrement = 0
-	# autoincrement = int(get_configFile_DB_total(table_name,path))+1
 
-	# if key == "auto":
-	# 	key = autoincrement
-		
-#	var string_data = []
-	# string_data.append(autoincrement) # agrega el id autoincrement al array | no requiere enviar id en el param dicc
-#	var result = {"block":{"block_build_type":1,"roof_top_type":1},"building_1":{"advice_type":1,"building_type":1,"neon_advice_type":1,"roof_type":1,"title_adv":"home","wall_type":1}}
-#	result = str(result)
-	
-#	for dat in dicc_param:
-#		string_data.append(dicc_param[dat])
-
-#	if not config.has_section_key(param[0],param[1]):
 	config.set_value(table_name,str(key),dicc_param)
-	# config.set_value(table_name,str(key),str(string_data))
-	# config.set_value(table_name,str(key),str(string_data).replace(", ",",").replace("[","").replace("]",""))
 	config.save(path)
-
 	return {"save_path":path,"save_dict":true}
 
 
@@ -493,7 +457,6 @@ func update_configFile(path,table_name,data_id,dicc_param): # dicc_param = arreg
 	var err = config.load(path)
 	if err == OK: # If not, something went wrong with the file loading
 		pass
-	
 
 	result = (config.get_value(table_name, "id", true))
 
@@ -646,7 +609,7 @@ func dicc_query(table_name,path,param):
 
 	if param["search"] == "*" and param["where"] == []:
 		if config.has_section(table_name): 
-			# busca pos de la param["section"]
+			# busca pos de param["section"]
 			if param["section"] != "*":
 				for i in range(0,Array(config.get_value(table_name, "id", true).split(",")).size() ):
 					if Array(config.get_value(table_name, "id", true).split(",") ).has(param["section"]):

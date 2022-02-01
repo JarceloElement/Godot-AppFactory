@@ -211,13 +211,12 @@ func _form_send(button_param): # RECOGE LOS TIPOS DE DATOS | del boton de enviar
 	
 	# SI ESTA COMPLETO EL FORMULARIO
 	if get_node("/root/FuncApp").Total_list_field == get_node("/root/FuncApp").array_form.size(): 
-		# print("ALERT_ADD_REQUEST_INSTANCE: ",param)
 		# print("array_field_name: ",get_node("/root/FuncApp").array_field_name)
 		var form_request_type = get_parent().form_request_type # tipo de request se coloca en list
 		var param = [button_param,form_request_type]
 		for i in get_tree().get_nodes_in_group("alert"):
 			i.click_awesome("alert_add_request_instance",param)
-			
+			# print("ALERT_ADD_REQUEST_INSTANCE: ",param)
 
 		get_node("/root/FuncApp").next_field_form = 1
 
