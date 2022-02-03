@@ -24,6 +24,7 @@ export var scn_path = ""
 var normal_style = StyleBoxFlat.new() setget _set_style
 var hover_style = StyleBoxFlat.new()
 var focus_style = StyleBoxFlat.new()
+var title_font = DynamicFont.new()
 
 
 
@@ -31,7 +32,7 @@ func _set_title(n_title):
 	Title_message = n_title
 	if is_inside_tree():
 		$Button.set_text("  "+str(Title_message)+"  ")
-		var title_font = DynamicFont.new()
+		title_font = DynamicFont.new()
 		title_font.font_data = font #load("res://app_core/fonts_preload/DroidSans.ttf")
 		title_font.size = title_size
 		$Button.set("custom_fonts/font", title_font)
@@ -95,14 +96,14 @@ func _set_font_color(color):
 	if is_inside_tree():
 		$Button.set("custom_fonts/font",font)
 		$Button.set("custom_colors/font_color",font_color)
-		$Button.set("custom_colors/font_color_hover",font_color)
+		$Button.set("custom_colors/font_color_hover",font_color_hover)
 		$Button.set("custom_colors/font_color_pressed",font_color)
 
 
 func _set_font(n_font):
 	font = n_font
 	if is_inside_tree():
-		var title_font = DynamicFont.new()
+		title_font = DynamicFont.new()
 		title_font.font_data = font #load("res://app_core/fonts_preload/DroidSans.ttf")
 		$Button.set("custom_fonts/font", title_font)
 
@@ -110,7 +111,7 @@ func _set_font(n_font):
 func _set_title_size(size):
 	title_size = size
 	if is_inside_tree():
-		var title_font = DynamicFont.new()
+		title_font = DynamicFont.new()
 		title_font.font_data = font #load("res://app_core/fonts_preload/DroidSans.ttf")
 		title_font.size = title_size
 		$Button.set("custom_fonts/font", title_font)
@@ -156,16 +157,18 @@ func _ready():
 	$Button.set("custom_styles/pressed",normal_style)
 	$Button.set("custom_styles/hover",hover_style)
 #	
-	var title_font = DynamicFont.new()
-	title_font.font_data = font
-	title_font.size = title_size
-	$Button.set("custom_fonts/font", title_font)
+
 		
 	$Button.set("custom_colors/font_color",font_color)
 	$Button.set("custom_colors/font_color_hover",font_color_hover)
 	$Button.set("custom_colors/font_color_pressed",font_color)
 	$Button.set("custom_colors/font_color_focus",font_color)
 	
+	title_font = DynamicFont.new()
+	title_font.font_data = font
+	title_font.size = title_size
+	$Button.set("custom_fonts/font", title_font)
+	$Button.set_text("  "+str(Title_message)+"  ")
 	
 	var title = get_node("/root/Messages").get(Title_message)
 	if title != null:
@@ -174,11 +177,13 @@ func _ready():
 		$Button.set_text("  "+str(Title_message)+"  ")
 
 
+
+	
 		
 func _pressed():
 #	print(ID_message,message_param)
-	if scn_path != "":
-		Loading.goto_scene(scn_path,"in")
-		
 	for i in get_tree().get_nodes_in_group("click_awesome"):
 		i.click_awesome(ID_message,message_param)
+		
+	if scn_path != "":
+		Loading.goto_scene(scn_path,"in")

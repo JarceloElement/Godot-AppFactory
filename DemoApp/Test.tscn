@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://app_core/modules/buttons/button_border.tscn" type="PackedScene" id=1]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://app_core/fonts_preload/DroidSans.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://app_core/modules/awesome_button/Button_icon_title.tscn" type="PackedScene" id=4]
+[ext_resource path="res://app_core/modules/images/parallax.jpg" type="Texture" id=5]
+[ext_resource path="res://app_core/modules/topBar/Top_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://app_core/modules/background_scene/Background_scene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://DemoApp/main_template.gd" type="Script" id=8]
+[ext_resource path="res://app_core/images/2.png" type="Texture" id=13]
+[ext_resource path="res://app_core/modules/viewer/Viewer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://app_core/modules/camera/MainCamera.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0.584314, 0.866667, 1 )
+corner_detail = 4
+
+[node name="Dashboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+menu_active = false
+scene_title = "Users list"
+windows_title = "Users list"
+
+[node name="Top_bar" parent="." instance=ExtResource( 6 )]
+
+[node name="back" parent="Top_bar/elements/MarginContainer_top/HBoxContainer" index="0"]
+path_scn = "res://DemoApp/Dashboard.tscn"
+
+[node name="Label" parent="Top_bar/elements/MarginContainer_top/HBoxContainer/Title_bar" index="0"]
+custom_fonts/font = SubResource( 7 )
+
+[node name="back_color" parent="Top_bar/elements/Panel_round" index="0"]
+margin_bottom = 90.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="MainCamera" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="Background_scene" parent="." instance=ExtResource( 7 )]
+texture_path = ExtResource( 5 )
+back_color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
+
+[node name="Viewer" parent="." instance=ExtResource( 14 )]
+anchor_top = 0.165714
+
+[node name="ScrollContainer" parent="Viewer" index="0"]
+margin_bottom = 574.0
+
+[node name="List" parent="Viewer/ScrollContainer" index="0"]
+margin_bottom = 574.0
+size_flags_vertical = 3
+form_type = ""
+form_request_type = ""
+form_db_name = "users.cfg"
+form_table_name = "USERS"
+field_instance_name = ""
+DB_name = "users.cfg"
+DB_table = "USERS"
+
+[node name="TextureRect" type="TextureRect" parent="Viewer/ScrollContainer/List" index="0"]
+visible = false
+margin_right = 360.0
+margin_bottom = 501.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Button_icon" parent="Viewer/ScrollContainer/List" index="1" instance=ExtResource( 2 )]
+visible = false
+margin_right = 360.0
+icon_color = Color( 1, 1, 1, 1 )
+
+[node name="Button_icon_title" parent="Viewer/ScrollContainer/List" index="2" instance=ExtResource( 4 )]
+visible = false
+margin_right = 360.0
+icon_color = Color( 0, 0.764706, 1, 1 )
+
+[node name="button_border" parent="Viewer/ScrollContainer/List" index="3" instance=ExtResource( 1 )]
+visible = false
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 360.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[editable path="Top_bar"]
+[editable path="Top_bar/elements/Panel_round"]
+[editable path="Viewer"]

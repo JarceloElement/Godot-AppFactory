@@ -10,84 +10,13 @@ var result_where_and = Array()
 var pos_section = 0
 var i_where = 0
 
-#var file_path = "res://examples/file.txt"
-#var path = "res://DB/vocabulario.cfg"
-#var csv_path = "res://DB/vocabulario.csv"
 var JSON_path = "res://DB/file.json"
-
-
-
 var line = []
-
 var data_string = " "
 
 
 
-# This is a valid dictionary.
-# To access the string "Nested value" below, use `my_dir.sub_dir.sub_key` or `my_dir["sub_dir"]["sub_key"]`.
-# Indexing styles can be mixed and matched depending on your needs.
-var my_dict = {
-	"house": ["casa","jaus"],
-	"car": "carro",
-	"horse": "caballo",
-	"hour": "hora",
-	"sub_dict": {"sub_key": "Nested value"},
-}
-
-
-
-
 func _ready():
-
-	
-#	my_dict["house"] = "hogar" # asigna valor
-#	print(my_dict["house"]) # imprime el valor de la var
-
-
-#	print( $"/root/FuncApp".save_csv_to_json("res://examples/file.csv") )
-	
-#	print( $"/root/FuncApp".save_csv_to_configfile("res://DB/tools_city.csv","res://DB/tools_city.cfg",",",0) )
-
-
-
-#	print( $"/root/FuncApp".load_csv("res://examples/file.csv", "*") )
-	
-#	print( $"/root/FuncApp".load_json_param("res://examples/file.json","horse") )
-#	print( $"/root/FuncApp".load_json_array("res://examples/file.json") )
-	
-#	var param = ["tablename", "key", "valor,valor2,valo3"]
-#	print( $"/root/FuncApp".save_configFile(path,param) )
-#	print( $"/root/FuncApp".erase_configFile(path,param) )
-	
-	
-	# CONSULTA SIN PARAMETROS O CON ID: IMPRIME SOLO INDEX
-#	var param["section"] = "*" # default *
-#	var search = "*" # default *
-#	var ID_ = "*" # alone no param["section"] no search | default *
-#	var where = [] # format["active,==,0"] | deafault []
-#	var id_field = "id" # default: ""
-
-#	var result_cfg = $"/root/FuncApp".get_configFile(param["section"],search,ID_,where) # get_configFile("param["section"]","search","id",[where:"active,==,1"])
-#	print("get_configFile_DB_total: ",$"/root/FuncApp".get_configFile_DB_total())
-	# =======
-	
-	
-	
-#	var store_var: Dictionary =  {"A":6,"B:":"dos","Animal":"perro"}
-#	print( $"/root/DbQuery".save_to_csv("res://DemoData.csv", store_var) )
-	
-	
-#	var query_param = {
-#		"section": "*",
-#		"search": "*",
-#		"id": "*",
-#		"where": [],
-#		"id_field": "id"
-#	}
-#	var DB = $"/root/DbQuery"
-#	var path = "res://SocialApp/leader_conf.cfg"
-#	print("QUERY-DEMO: ",DB.conf_query("CONF",path,query_param)["result"][0]["title"])
-#
 
 	pass
 
@@ -122,7 +51,6 @@ func export_to_csv(path_from,path_to,table_name):
 	return_var["finish"] = "Exporting..."
 	return_var["max_value"] = Qconf["result"].size()
 	
-	# var set_line_to_csv
 	for i in Qconf["result"]:
 		
 		var string_data = []
@@ -154,10 +82,8 @@ func save_to_csv(path, param):
 	var string_data = []
 	for dat in param:
 		string_data.append(param[dat])
-#	print("save_to_csv: ",string_data)
 	
 	# SAVE TO CSV
-	
 	# crea el archivo si no esxiste
 	var file_store: File = File.new()
 	var dir_new = Directory.new()
@@ -202,10 +128,8 @@ func load_csv(csv_path, search):
 #				print("Search: ",line[1],"|",str(line[1]).find(search,0))
 				search_result.append(line)
 
-
 	file.close()
 #	print( load_json_param("house") )
-
 	return search_result
 
 
@@ -215,7 +139,6 @@ func save_csv_to_json(csv_path):
 	
 	var file: File = File.new()
 	file.open(csv_path, File.READ)
-	
 	
 	# CSV to JSON
 	var id_var = Array()
@@ -237,7 +160,6 @@ func save_csv_to_json(csv_path):
 			data_string = data_string + '\n"'+id_var[1]+'": '+str(array_var)+","
 			json_parse = "{ "+str(data_string)+" }"
 			
-			
 		loading = loading+1
 #		print("Loading csv: ",loading)
 		
@@ -250,7 +172,6 @@ func save_csv_to_json(csv_path):
 
 	file.close()
 #	print( load_json_param("house") )
-
 	return ["CSV_to_JSON: Done"]
 	
 	
@@ -261,31 +182,14 @@ func save_csv_to_json(csv_path):
 
 func save_to_json(JSON_path,dicc_param):
 	
-	# var file: File = File.new()
-	# file.open(param, File.READ)
-	
-	
-	# CSV to JSON
-	# var id_var = Array()
 	var array_var = Array()
 	var json_parse = ""
 	
-	# var loading = 0
-	# while not file.eof_reached():
-	# 	line = file.get_csv_line(",")
-	# 	# CSV to JSON
-	# 	array_var = []
-	# 	id_var = Array(line)
-	print(dicc_param)
-	# coloca comillas a los datos del array
 	for dat in dicc_param:
-#		dat = '"'+dat+'"'
 		print(dat)
 		data_string = data_string + '"'+dat+'": '+str(dicc_param[dat])+","
 		
 	json_parse = "{ "+str(data_string)+" }"
-		
-			
 		
 	# SAVE JSON
 	var JSON_file_save = File.new()
@@ -293,9 +197,7 @@ func save_to_json(JSON_path,dicc_param):
 	JSON_file_save.store_string(str(json_parse+"\n"))
 	JSON_file_save.close()
 #	print(str(json_parse))
-
 #	print( load_json_param("house") )
-
 	return ["Save_to_JSON: Done to: ",JSON_path]
 
 
@@ -356,7 +258,6 @@ func save_csv_to_configfile(table_name,csv_path,path,delimit,field_index):
 	if err == OK: # If not, something went wrong with the file loading
 		return ["CSV_to_configfile :",path,"Exist ","TRUE"]
 	
-	
 	else:
 		var loading = 0
 		while not file.eof_reached():
@@ -376,7 +277,6 @@ func save_csv_to_configfile(table_name,csv_path,path,delimit,field_index):
 		file.close()
 		print("CSV_to_configfile: CREATED")
 		return ["CSV_to_configfile :",path," created ","TRUE"]
-	
 		# print("err: config.load(path) ",err) # 7= no existe, 0=existe
 	
 	
@@ -451,34 +351,16 @@ func save_configFile(path,table_name,key,dicc_param):
 	
 
 
-func save_dict_configFile(path,table_name,key,dicc_param):
+func save_dict_configFile(table_name,path,key,dicc_param):
 	
 	# SAVE CONFIGFILE
 	var config = ConfigFile.new()
 	var err = config.load(path)
 	if err == OK: # If not, something went wrong with the file loading
 		pass
-	
-	# var autoincrement = 0
-	# autoincrement = int(get_configFile_DB_total(table_name,path))+1
 
-	# if key == "auto":
-	# 	key = autoincrement
-		
-#	var string_data = []
-	# string_data.append(autoincrement) # agrega el id autoincrement al array | no requiere enviar id en el param dicc
-#	var result = {"block":{"block_build_type":1,"roof_top_type":1},"building_1":{"advice_type":1,"building_type":1,"neon_advice_type":1,"roof_type":1,"title_adv":"home","wall_type":1}}
-#	result = str(result)
-	
-#	for dat in dicc_param:
-#		string_data.append(dicc_param[dat])
-
-#	if not config.has_section_key(param[0],param[1]):
 	config.set_value(table_name,str(key),dicc_param)
-	# config.set_value(table_name,str(key),str(string_data))
-	# config.set_value(table_name,str(key),str(string_data).replace(", ",",").replace("[","").replace("]",""))
 	config.save(path)
-
 	return {"save_path":path,"save_dict":true}
 
 
@@ -486,14 +368,11 @@ func save_dict_configFile(path,table_name,key,dicc_param):
 
 func update_configFile(path,table_name,data_id,dicc_param): # dicc_param = arreglo dicc
 	
-#	print("update_configFile: ",path,table_name,dicc_param)
-
 	# config.load(path)
 	var config = ConfigFile.new()
 	var err = config.load(path)
 	if err == OK: # If not, something went wrong with the file loading
 		pass
-	
 
 	result = (config.get_value(table_name, "id", true))
 
@@ -564,7 +443,6 @@ func update_configFile(path,table_name,data_id,dicc_param): # dicc_param = arreg
 	# -----------------------------------
 
 	result = dicc_result_line
-	
 	return result
 
 
@@ -630,23 +508,23 @@ func dicc_query(table_name,path,param):
 	var query = {}
 	var fields = {}
 	
-	result = (config.get_value(table_name, param["id_field"], true))
-	# print("result: ",result)
-	
-	# DECLARA LOS FIELD PARA LAS CONSULTAS
-	var count = 0
-	var json_parse = ""
-	var data_string = " "
-	for field in result.split(","):
-		fields[field] = count
-		count += 1
-		# print("fields: ",fields)
+#	result = (config.get_value(table_name, param["id_field"], true))
+##	print("result: ",result)
+#
+#	# DECLARA LOS FIELD PARA LAS CONSULTAS
+#	var count = 0
+#	var json_parse = ""
+#	var data_string = " "
+#	for field in result.split(","):
+#		fields[field] = count
+#		count += 1
+#		# print("fields: ",fields)
 	#-------------------------
 
 
 	if param["search"] == "*" and param["where"] == []:
 		if config.has_section(table_name): 
-			# busca pos de la param["section"]
+			# busca pos de param["section"]
 			if param["section"] != "*":
 				for i in range(0,Array(config.get_value(table_name, "id", true).split(",")).size() ):
 					if Array(config.get_value(table_name, "id", true).split(",") ).has(param["section"]):
@@ -695,7 +573,7 @@ func dicc_query(table_name,path,param):
 
 	# print("RESULT_QUERY: ",result)
 	query["result"] = result
-	query["fields"] = fields
+#	query["fields"] = fields
 	return query
 
 
@@ -928,8 +806,6 @@ func DB_get_all_index(table_name,path,param):#=======================
 				result = array_index
 				# -----------------------------------
 
-				
-	
 			elif param["section"] == "*" and param["id"] != "*":
 
 				result = config.get_value(table_name, config.get_section_keys(table_name)[int(param["id"])], true).split(",")
@@ -949,7 +825,6 @@ func DB_get_all_index(table_name,path,param):#=======================
 				result = array_index
 				# -----------------------------------
 
-			
 			elif param["section"] != "*" and param["id"] != "*":
 				result = config.get_value(table_name, config.get_section_keys(table_name)[int(param["id"])], true).split(",")[pos_section]
 				# CREAR RESULT COMO DICC

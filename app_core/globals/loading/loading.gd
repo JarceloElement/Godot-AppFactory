@@ -46,7 +46,6 @@ func goto_scene(path,trans): # game requests to switch to this scene
 
 func _process(time):
 #	$Sprite.rotate(0.07)
-	
 	if loader == null:
 		# no need to process anymore
 		set_process(false)
@@ -56,19 +55,13 @@ func _process(time):
 
 	if wait_frames > 0: # wait for frames to let the "loading" animation to show up
 		wait_frames -= 1
-		
 		return
-
-
-
 
 	var t = OS.get_ticks_msec()
 
 	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control how much time we block this thread
-
 		# poll your loader
 		var err = loader.poll()
-
 		if err == ERR_FILE_EOF: # load finished
 			var resource = loader.get_resource()
 			loader = null

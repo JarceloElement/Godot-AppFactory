@@ -10,7 +10,7 @@ export var btn_title = "Title" setget _set_title
 var color_icon_activo ="ed1a73"
 
 export var ID_message = "title"
-export var message_param = ["click"]
+export var message_param = ["click_title"]
 export var path_scn = ""
 
 var set_id_btn = 0
@@ -55,6 +55,7 @@ func _ready():
 #	$icon.connect("gui_input",self,"_on_FontAwesome_gui_input")
 
 
+	$VBoxContainer/Label.set("custom_colors/font_color",title_color)
 	$VBoxContainer/icon.set("custom_colors/font_color",icon_color)
 	$VBoxContainer/icon.icon = icon
 	$VBoxContainer/icon.size = icon_size
@@ -73,10 +74,8 @@ func _on_FontAwesome_gui_input( ev ):
 			var slider_pos_global = get_node("/root/SliderControl").slider_pos_global
 				
 			if slider_pos_global < 5:
-				
-				if ID_message == "scn":
+				if path_scn != "":
 					Loading.goto_scene(path_scn,"in")
-
 				else:
 					for i in get_tree().get_nodes_in_group("click_awesome"):
 						i.click_awesome(ID_message,message_param)
