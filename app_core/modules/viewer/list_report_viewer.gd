@@ -100,6 +100,24 @@ func _add_result_request_list(): # lo envia el DB_control al terminar la carga
 		
 		
 	# ======================================
+		# LOAD DB | DEAFAULT form_type
+		# lista de usuarios existentes
+		if form_type == "":
+			var query_param = {
+				"section": "*",
+				"search": "*",
+				"id": "*",
+				"where": [],
+				"id_field": "id"
+			}
+			var DB = $"/root/DbQuery"
+			var path = get_node("/root/FuncApp").ACTIVE_DB_PATH["path"]
+			query = DB.dicc_query(form_table_name,path,query_param) # query_param("section","search","id",where:["active,==,1"])
+#			print("LOAD DB DEAFAULT: ",query)
+			total_report = query["result"].size()
+			get_node("/root/FuncApp").Total_list_field = total_report
+#			print("total_report FORM:",query["result"].size())
+
 
 		# LOGIN FORM
 		# loading data
@@ -150,7 +168,7 @@ func _add_result_request_list(): # lo envia el DB_control al terminar la carga
 		# ----------------------------------------------
 
 	get_node("/root/FuncApp").total_report = total_report
-	get_node("/root/FuncApp").resul_report = total_report
+	get_node("/root/FuncApp").result_report = total_report
 	# print("Hello %s, how you %s" % ["a", "b"])
 
 	# ----------------------------------------------
@@ -210,7 +228,7 @@ func _process(delta):
 
 
 func add_item():
-
+	
 	if view_mode == 1:
 		N_list += 1
 		# asigna pos al scroll donde estaba al salir al preview
@@ -230,11 +248,15 @@ func add_item():
 		var ping
 		if field_instance_name != "":
 			ping = get_node("/root/FuncApp").get(get_node("/root/FuncApp").field_instance_name).instance()
+		
+		# NO field_instance_name | create label to list
 		else:
 			ping = Label.new()
 			ping.autowrap = true
-			ping.align = Label.ALIGN_CENTER
+#			ping.align = Label.ALIGN_CENTER
 			ping.add_to_group("form_fields")
+			ping.text = str(query["result"][N_list-1]["user_name"])
+			
 			
 		# FORM
 		if form_type == "form":

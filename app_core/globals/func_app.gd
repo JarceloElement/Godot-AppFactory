@@ -1,63 +1,20 @@
 extends Control
 
-
 # THEME COLORS
 export var color_option_field_head = Color("c90045")
 export var color_option_field_body = Color("404040")
 export var color_show_pass_icon_act = Color("d2205d")
 export var color_show_pass_icon_inact = Color("c3c3c3")
 
-var scroll_top = 1
-
-# mobile | telefono
-# map-marker | direccion
-# pencil | editar
-# bar-chart | indicadores
-# bar-chart-o | indicadores
-# user-circle-o | usuario circular
-# address-book-o | cuaderno de usuario
-# id-card-o | credencial DNI
-
-# list-alt|| listas
-# list-ol
-# list-ul
-
-# cloud-download
-# cloud-upload
-# sign-in
-# user-plus
-# user-times
-# id-badge | carnet
-
-# sun-o
-# commenting
-# sellsy | nube wifi
-# comments
-
-# GLOBAL VARS
-var menu_hide = 1
-var anime_menu = 0
-
-var config = ConfigFile.new()
-var result = ""
-var result_search = Array()
-var result_where_search = Array()
-var pos_section = 0
-var i_where = 0
-
-
-# VARS
-var GLOBAL = {}
-var PopUp_contact_var = 1
-var Total_list_field = 0
-var field_instance_name = "" # viene de DB_control
-var Request_status = 0
-
 # ---- DB ----
 var dir_new = Directory.new()
 var export_DB_to_user = true
 
-# path
+# ---- PATH ----
+# OS.get_system_dir(_OS.SYSTEM_DIR_DOWNLOADS)
+# OS.get_system_dir(NOTIFICATION_WM_GO_BACK_REQUEST
+#var Home = OS.get_system_dir(2) # PC= Mis documentos | Android= Download
+
 var Local_img_path = "res://images/products/"
 var dir_name_home = "/InfoApp"
 var dir_name_media = "/Media"
@@ -66,10 +23,6 @@ var dir_name_data = "/Data"
 var dir_name_user = OS.get_user_data_dir()+"/DB"
 var path
 
-	# OS.get_system_dir(_OS.SYSTEM_DIR_DOWNLOADS)
-	# OS.get_system_dir(NOTIFICATION_WM_GO_BACK_REQUEST
-
-#var Home = OS.get_system_dir(2) # PC= Mis documentos | Android= Download
 var path_res = "res://DB/"
 var Home = str(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)) + dir_name_home
 var path_media = str(Home) + dir_name_media
@@ -77,7 +30,6 @@ var path_image = path_media + dir_name_image
 var path_data = path_media + dir_name_data+"/"
 var path_user = dir_name_user+"/"
 #-------------
-var leader_conf_path = path_user+"/leader_conf.cfg"
 
 # PATH DATABASE
 var DB_control_priority = 1
@@ -85,26 +37,24 @@ var ACTIVE_DB_PATH = {"path":"","table_name":""} # [path,table_name]
 var post_request_dicc = {}
 var session_path = {"path":path_user+"users.cfg","table_name":"USERS"}
 
-var city_DB_tool = path_user+"tools_city.cfg"
-var city_DB_path = {"path":path_user+"main_city.cfg","table_name":"CITY"}
-
-
 # INSTANCES
-#var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
+var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
 var HTTPRequest_form = preload("res://app_core/modules/http/DB_form_request.tscn")
-#var register_category = preload("res://app_core/modules/buttons/Category.tscn")
 var line_edit_panel = preload("res://app_core/modules/form/line_edit_panel.tscn") # change
-#var PopUp_field_edit = preload("res://SocialApp/PopUp_field_edit.tscn")
-#var Field_conf = preload("res://SocialApp/field_conf.tscn")
-
-
 
 # THEMES
 #var theme_city_tools = load("res://trivie_game/gui_theme/scroll.tres")
 var text_theme = load("res://app_core/themes/text_edit_theme.tres")
 
 
+# animate | form
+var size_list = 100
+var scroll_D = 0
+var visible_slider_list = 1
+var visible_selec = 1
+var mov_slider = 0
 
+# VARS
 var file_path = "res://examples/file.txt"
 var conf_path = "res://DB/vocabulario.cfg"
 var csv_path = "res://DB/vocabulario.csv"
@@ -117,18 +67,22 @@ var tts_type = 0
 var output = []
 var npc_dialog_str = "Hello, hola, welcome, bienvenido"
 
+var menu_hide = 1
+var anime_menu = 0
 
-# HTTP
-var conexion_status = 1
-var HOST = "http://10.42.0.1/anuncios/"
+var config = ConfigFile.new()
+var result = ""
+var result_search = Array()
+var result_where_search = Array()
+var pos_section = 0
+var i_where = 0
 
+var GLOBAL = {}
+var PopUp_contact_var = 1
+var Total_list_field = 0
+var field_instance_name = "" # viene de DB_control
+var Request_status = 0
 
-
-var scroll_top_end = 0
-var temp_total_show = 0
-var temp_pos_scroll = 0
-
-# vars
 var screen_size = ""
 var responsive_size = Vector2()
 var responsive_margin_L = ""
@@ -144,28 +98,26 @@ var popup_active = 0
 var is_empty_field = 0
 var next_field_form = 1
 var active_field = 0
-
-# # animate | form
-var size_list = 100
-var scroll_D = 0
-var visible_slider_list = 1
-var visible_selec = 1
-var mov_slider = 0
-
+var scroll_top = 1
+var scroll_top_end = 0
+var temp_total_show = 0
+var temp_pos_scroll = 0
 var array_form = []
 var array_field_name = []
 var array_field_data = []
+var total_report = 0
+var result_report = ""
 
 
 #  param request
 var HTTP_Request_result = {}
 
+# HTTP
+var conexion_status = 1
+var HOST = "http://10.42.0.1/test/"
 
-var PopUp_contact = preload("res://app_core/modules/popup/PopUp_contact.tscn")
-
-
-var total_report = 0
-var resul_report = ""
+# FORM
+var FORM_DATA = {}
 
 # SESSION
 var SESSION = {"user_id":"1","user_name":"Player","user_avatar":"1","wallet":"5000"}
@@ -195,30 +147,10 @@ var p_image_url = ""
 var p_url = ""
 
 
-
-# # datos de la partida
-# var total_answer_in_trivie = 0
-# var user_game_name = 0
-# var user_correct_answer = 0
-# var user_incorrect_answer = []
-# var user_game_time = 0
-
-
-
-
-# hacer captura de un nodo
-#	img = get_viewport().get_screen_capture().get_rect(imagenode_rect)
-
-
-
-
-
-
-
 func _ready():
 
 
-	# MOSTRAR ALERTAS
+	# HOW SHOW ALERT
 	# var param_1 = ["buy_from: "+get_name(),title,"icon_off","ff9500","ffffff"] # color:icon, color:title
 	# for i in get_tree().get_nodes_in_group("alert"):
 	# 	i.click_awesome("alert_show",param_1)
@@ -246,7 +178,18 @@ func _ready():
 
 	# print("path_data: ",dir_name_user)
 
-	pass
+	
+
+	# var query_param = {
+	# 	"section": "*",
+	# 	"search": "*",
+	# 	"id": "*",
+	# 	"where": [],
+	# 	"id_field": "id"
+	# }
+	# print(get_node("/root/DbQuery").dicc_query(session_path["table_name"],session_path["path"],query_param))
+
+
 
 
 

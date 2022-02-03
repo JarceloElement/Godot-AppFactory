@@ -143,15 +143,12 @@ var add_build = "Ampliar edificio"
 var add_roof = "Modificar terraza"
 var add_roof_park = "Modificar techo"
 var add_aerial = "Antenas de comunicación"
-
 var block_tools = "Herramientas"
 var add_advice = "Tipos de avisos"
 var add_neon = "Tipos de neon"
 var add_front_roof = "Tipos de fachadas"
-
 var buy_confirm = "¿Deseas comprar este activo?\n"
 var delete_confirm = "¿Deseas demoler?\nNo se puede revertir luego"
-
 var Home = "Casa"
 
 

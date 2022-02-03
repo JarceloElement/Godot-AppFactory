@@ -98,13 +98,13 @@ anchor_bottom = 0.0
 margin_top = 585.0
 margin_right = 300.0
 margin_bottom = 633.0
-Title_message = "Signup"
+Title_message = "Back"
 title_size = 40
 corner_radius_lefttop = 10
 corner_radius_rigthbottom = 10
 border_width = 0
 ID_message = "scn"
-scn_path = "res://DemoApp/signup_form.tscn"
+scn_path = "res://DemoApp/Dashboard.tscn"
 
 [node name="Slider_2" parent="Slider_container/ParallaxBackground/VBoxContainer/Items" index="1" instance=ExtResource( 3 )]
 margin_left = 304.0

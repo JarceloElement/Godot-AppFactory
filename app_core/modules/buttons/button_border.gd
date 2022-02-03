@@ -1,12 +1,14 @@
 tool
-extends MarginContainer
+extends HBoxContainer
 
 export  (DynamicFontData) var font setget _set_font
+export var Title_message = "Title" setget _set_title
 export var title_size = 25 setget _set_title_size
 export var back_color = Color("ffffff") setget _set_back_color
 export var hover_color = Color("2d2d2d")
 export var border_color = Color("ff0078") setget _set_border_color
 export var font_color = Color("ff0078") setget _set_font_color
+export var font_color_hover = Color("ffffff")
 export var corner_radius_lefttop = 5
 export var corner_radius_rigthtop = 5
 export var corner_radius_leftbottom = 5
@@ -14,7 +16,6 @@ export var corner_radius_rigthbottom = 5
 export var anti_aliasing = 1
 export var corner_detail = 4
 export var border_width = 1 setget _set_border_width
-export var Title_message = "Title"
 export var ID_message = "title"
 export var message_param = Array(["click_btn"])
 export var scn_path = ""
@@ -23,6 +24,16 @@ var normal_style = StyleBoxFlat.new() setget _set_style
 var hover_style = StyleBoxFlat.new()
 
 
+func _set_title(n_title):
+	Title_message = n_title
+	if is_inside_tree():
+		$Button.set_text("  "+str(Title_message)+"  ")
+		var title_font = DynamicFont.new()
+		title_font.font_data = font #load("res://app_core/fonts_preload/DroidSans.ttf")
+		title_font.size = title_size
+		$Button.set("custom_fonts/font", title_font)
+		
+		
 
 func _set_style(style):
 	normal_style = style
@@ -82,7 +93,7 @@ func _set_font_color(color):
 	if is_inside_tree():
 		$Button.set("custom_fonts/font",font)
 		$Button.set("custom_colors/font_color",font_color)
-		$Button.set("custom_colors/font_color_hover",font_color)
+		$Button.set("custom_colors/font_color_hover",font_color_hover)
 		$Button.set("custom_colors/font_color_pressed",font_color)
 
 
@@ -145,17 +156,18 @@ func _ready():
 	title_font.font_data = font
 	title_font.size = title_size
 	$Button.set("custom_fonts/font", title_font)
-		
+	
 	$Button.set("custom_colors/font_color",font_color)
-	$Button.set("custom_colors/font_color_hover",font_color)
+	$Button.set("custom_colors/font_color_hover",font_color_hover)
 	$Button.set("custom_colors/font_color_pressed",font_color)
+	$Button.set("custom_colors/font_color_focus",font_color)
 	
 	
 	var title = get_node("/root/Messages").get(Title_message)
 	if title != null:
-		$Button.set_text(str(title))
+		$Button.set_text(str("  "+str(title)+"  "))
 	else:
-		$Button.set_text(str(Title_message))
+		$Button.set_text(str("  "+str(Title_message)+"  "))
 
 
 		

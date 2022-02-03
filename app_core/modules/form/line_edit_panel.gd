@@ -165,13 +165,14 @@ func _form_send(button_param): # RECOGE LOS TIPOS DE DATOS | del boton de enviar
 	data_field = str(field_path.get_text())
 	
 	# CREA LA LISTA CON LOS DATOS DEL FORM
-
+	
 	# SI TIENE DATOS EL CAMPO
 	if (data_field != "" or int(is_null) == 1) and get_node("/root/FuncApp").next_field_form == int(get_name()): 
 		if int(get_name()) < get_node("/root/FuncApp").Total_list_field:
 			get_node("/root/FuncApp").array_form.append(name+"="+data_field.replace(" ","+").replace("\n","+")+"&")
 			get_node("/root/FuncApp").array_field_name.append(field_name)
 			get_node("/root/FuncApp").array_field_data.append(data_field)
+			get_node("/root/FuncApp").FORM_DATA[field_name] = data_field
 			if data_field == "":
 				data_field = default_value
 			get_node("/root/FuncApp").post_request_dicc[field_name] = data_field
@@ -181,6 +182,7 @@ func _form_send(button_param): # RECOGE LOS TIPOS DE DATOS | del boton de enviar
 			get_node("/root/FuncApp").array_form.append(name+"="+data_field.replace(" ","+").replace("\n","+"))
 			get_node("/root/FuncApp").array_field_name.append(field_name)
 			get_node("/root/FuncApp").array_field_data.append(data_field)
+			get_node("/root/FuncApp").FORM_DATA[field_name] = data_field
 			if data_field == "":
 				data_field = default_value
 			get_node("/root/FuncApp").post_request_dicc[field_name] = data_field
@@ -199,6 +201,7 @@ func _form_send(button_param): # RECOGE LOS TIPOS DE DATOS | del boton de enviar
 		get_node("/root/FuncApp").array_field_name = []
 		get_node("/root/FuncApp").array_field_data = []
 		get_node("/root/FuncApp").post_request_dicc = {}
+		get_node("/root/FuncApp").FORM_DATA = {}
 	
 		var param = ["form_add_alert_empty_field",str(get_node("/root/Messages").get("_empty_form_field"))+'"'+placeholder_text+'"',"warning","ff9500","2d2d2d"]
 		var mensajes = get_tree().get_nodes_in_group("alert")

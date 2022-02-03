@@ -7,7 +7,6 @@ var blok = 0
 
 export var scene_ID = 1 # 
 export var menu_active = bool(1)
-export var message_title = "Dashboard"
 export var scene_title = "Dashboard"
 export var windows_title = "Dashboard"
 var _title = ""
@@ -39,10 +38,9 @@ func _ready():
 		scene_title = get_node("/root/Messages").get("member_title") % get_node("/root/Global").TEMP_REGISTER_MEMBER_PARAM["name_boss"]
 	
 	# -- MENSAJE AL TITULO DE LA VENTANA ---
-	if get_node("/root/Messages").get(message_title) != null:
-		scene_title = get_node("/root/Messages").get(message_title)
-		
-	elif message_title == "":
+	if get_node("/root/Messages").get(scene_title):
+		scene_title = get_node("/root/Messages").get(scene_title)
+	else:
 		scene_title = scene_title
 		
 	for i in get_tree().get_nodes_in_group("click_awesome"):

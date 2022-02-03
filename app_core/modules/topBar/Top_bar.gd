@@ -47,27 +47,27 @@ func set_title_from_categ(Titulo):
 
 	
 	
-func click_awesome(id_messaje,message_param):
-	if id_messaje == "title":
+func click_awesome(id_message,message_param):
+	if id_message == "title":
 		if show_title == 1:
 			get_node("elements/MarginContainer_top/HBoxContainer/Title_bar/Label").set_text(message_param[0])
 		
-#	if id_mensaje == "top_bar_volver" and mensaje_text[0] == "0":
+#	if id_message == "top_bar_volver" and mensaje_text[0] == "0":
 #		get_node("CanvasLayer/MarginContainer_top/HBoxContainer/menu").hide()
 #
-#	if id_mensaje == "no_menu":
+#	if id_message == "no_menu":
 #		get_node("CanvasLayer/MarginContainer_top/HBoxContainer/menu").hide()
 #
-#	if id_mensaje == "preview_camera" and mensaje_text[0] == "hide":
+#	if id_message == "preview_camera" and mensaje_text[0] == "hide":
 #		get_node("CanvasLayer").hide()
 #
-#	if id_mensaje == "preview_camera" and mensaje_text[0] == "show":
+#	if id_message == "preview_camera" and mensaje_text[0] == "show":
 #		get_node("CanvasLayer").show()
 #
-#	if id_mensaje == "add_popup" and mensaje_text[0] == "hide":
+#	if id_message == "add_popup" and mensaje_text[0] == "hide":
 #		get_node("CanvasLayer").hide()
 #
-#	if id_mensaje == "add_popup" and mensaje_text[0] == "show":
+#	if id_message == "add_popup" and mensaje_text[0] == "show":
 #		get_node("CanvasLayer").show()
 
-#	print(id_mensaje,mensaje_text)
+#	print(id_message,mensaje_text)

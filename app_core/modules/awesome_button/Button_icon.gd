@@ -35,11 +35,9 @@ func _set_color(n_color):
 
 func _ready():
 	add_to_group("button_icon")
-	add_to_group("click_awesome")
 	
 	connect("gui_input",self,"_on_FontAwesome_gui_input")
 #	$icon.connect("gui_input",self,"_on_FontAwesome_gui_input")
-
 
 	if is_inside_tree():
 		$icon.set("custom_colors/font_color",icon_color)
@@ -47,41 +45,18 @@ func _ready():
 		$icon.size = icon_size
 
 
-
-
 func _on_FontAwesome_gui_input( ev ):
 	if ev is InputEventMouseButton:
-
 		if !ev.pressed:
 			var slider_pos_global = get_node("/root/SliderControl").slider_pos_global
-				
 			if slider_pos_global < 5:
-				
-				if ID_message == "scn":
+				if path_scn != "":
 					Loading.goto_scene(path_scn,"in")
-
 				else:
 					for i in get_tree().get_nodes_in_group("click_awesome"):
 						i.click_awesome(ID_message,message_param)
 #					print("Click_icon")
 			OS.hide_virtual_keyboard()
-			
-#					print("Click: ",ID_message)
 
-
-
-
-func click_awesome(ID_message,message_param):
-
-	if ID_message == "color_icon_activo":
-		color_icon_activo = message_param
-		$icon.set("custom_colors/font_color",color_icon_activo)
-
-	if ID_message == "paginacion" and int(ID) == int(2):
-		if get_name() == str(message_param):
-			$icon.set("custom_colors/font_color",color_icon_activo)
-		else:
-			$icon.set("custom_colors/font_color",icon_color)
-#	print(message_param[0])
 
 

@@ -51,7 +51,6 @@ func _ready():
 
 
 
-
 	# CREAR DB CON DATOS DEL FORM
 	if form_request_type == "signup":
 
@@ -73,18 +72,72 @@ func _ready():
 		get_node("/root/FuncApp").array_field_data.append(str(get_node("/root/FuncApp")._today_datetime())) # date_update
 		get_node("/root/FuncApp").array_field_data.append(str(5000)) # wallet
 
-		# var session_path = get_node("/root/FuncApp").session_path[0] # variable estatica en func_app
-		# var session_key = get_node("/root/FuncApp").session_path[1] # variable estatica en func_app
-		var session_path = get_node("/root/FuncApp").ACTIVE_DB_PATH["path"] # se asigna en list del formulario
-		var session_key = get_node("/root/FuncApp").ACTIVE_DB_PATH["table_name"] # se asigna en list del formulario
+		get_node("/root/FuncApp").FORM_DATA["user_avatar"] = "1"
+		get_node("/root/FuncApp").FORM_DATA["date_reg"] = str(get_node("/root/FuncApp")._today_datetime())
+		get_node("/root/FuncApp").FORM_DATA["date_update"] = str(get_node("/root/FuncApp")._today_datetime())
+		get_node("/root/FuncApp").FORM_DATA["wallet"] = str(5000)
+		
+		
+		var session_path = get_node("/root/FuncApp").session_path["path"] # variable estatica en func_app
+		var session_key = get_node("/root/FuncApp").session_path["table_name"] # variable estatica en func_app
+		# var session_path = get_node("/root/FuncApp").ACTIVE_DB_PATH["path"] # se asigna en list del formulario
+		# var session_key = get_node("/root/FuncApp").ACTIVE_DB_PATH["table_name"] # se asigna en list del formulario
+		
+		# print(get_node("/root/DbQuery").create_configfile(session_path,session_key,field_name_list)) # crea la DB
 
+		# print("FORM_DATA: ",get_node("/root/FuncApp").FORM_DATA)
+
+		var key = get_node("/root/FuncApp").FORM_DATA["user_name"]
+		var query_param = {
+			"section": "*",
+			"search": str(key),
+			"id": "*",
+			"where": [],
+			"id_field": "id"
+		}
+		var new_user = get_node("/root/DbQuery").dicc_query(session_key,session_path,query_param)
+		print("new_user: ",new_user["result"])
 		# comprueba si el usuario existe
-		if get_node("/root/DbQuery").add_user(session_key,session_path,get_node("/root/FuncApp").array_field_data)[2] == "TRUE":
-			print(get_node("/root/DbQuery").create_configfile(session_key,session_path,field_name_list)) # crea la DB
-			print(get_node("/root/DbQuery").add_user(session_key,session_path,get_node("/root/FuncApp").array_field_data)) # hace el registro
+		if new_user["result"] != null:
+			if key != new_user["result"]["user_name"]:
+				# save dicc DB
+				print(get_node("/root/DbQuery").save_dict_configFile(session_key,session_path,key,get_node("/root/FuncApp").FORM_DATA) )
+			
+			# # comprueba si el usuario existe | save conf DB
+			# if get_node("/root/DbQuery").add_user(session_key,session_path,get_node("/root/FuncApp").array_field_data)[2] == "TRUE":
+			# 	print(get_node("/root/DbQuery").add_user(session_key,session_path,get_node("/root/FuncApp").array_field_data)) # hace el registro
 
+				# alerta nex user added
+				var user_name = get_node("/root/Messages").get("New_user_add") % key
+				var param = ["from DB_form",user_name,"user","","2d2d2d"]
+				for i in get_tree().get_nodes_in_group("alert"):
+					i.click_awesome("alert_show",param)
+				get_node("/root/FuncApp").array_field_data = []
+
+				var mensajes = get_tree().get_nodes_in_group("clear_form_field")
+				for i in mensajes:
+					i.clear_form_field() # va a los campos del formulario
+				queue_free()
+
+			else:
+				# alerta user exist
+				var user_name = get_node("/root/Messages").get("User_already_exist") % key
+				# print("Hello %s, how you %s" % ["a", "b"])
+				var param = ["from DB_form",user_name,"","","dc003e"]
+				for i in get_tree().get_nodes_in_group("alert"):
+					i.click_awesome("alert_show",param)
+					
+				get_node("/root/FuncApp").array_field_data = []
+				get_node("/root/FuncApp").array_form = []
+				queue_free()
+				
+				
+		# si el usuario no existe
+		if new_user["result"] == null:
+			# save dicc DB
+			print(get_node("/root/DbQuery").save_dict_configFile(session_key,session_path,key,get_node("/root/FuncApp").FORM_DATA) )
 			# alerta nex user added
-			var user_name = get_node("/root/Messages").get("New_user_add") % get_node("/root/FuncApp").array_field_data[0]
+			var user_name = get_node("/root/Messages").get("New_user_add") % key
 			var param = ["from DB_form",user_name,"user","","2d2d2d"]
 			for i in get_tree().get_nodes_in_group("alert"):
 				i.click_awesome("alert_show",param)
@@ -93,24 +146,11 @@ func _ready():
 			var mensajes = get_tree().get_nodes_in_group("clear_form_field")
 			for i in mensajes:
 				i.clear_form_field() # va a los campos del formulario
-				
 			queue_free()
 
 
-		else:
-			# alerta user exist
-			var user_name = get_node("/root/Messages").get("User_already_exist") % get_node("/root/FuncApp").array_field_data[0]
-			# print("Hello %s, how you %s" % ["a", "b"])
-			var param = ["from DB_form",user_name,"","","dc003e"]
-			for i in get_tree().get_nodes_in_group("alert"):
-				i.click_awesome("alert_show",param)
-				
-			get_node("/root/FuncApp").array_field_data = []
-			get_node("/root/FuncApp").array_form = []
-
-			queue_free()
-	
-	
+		
+		
 
 
 	# USER LOGIN
@@ -204,7 +244,7 @@ func _ready():
 
 
 
-
+	# SOCIAL APP
 
 	if form_request_type == "register":
 
